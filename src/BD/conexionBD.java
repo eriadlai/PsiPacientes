@@ -3,24 +3,53 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views;
+package BD;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import psipacientes.motor;
 
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class LoginView extends javax.swing.JFrame {
-
+public class conexionBD extends javax.swing.JFrame {
+  // Declaramos la conexion a mysql
+    private static Connection con;
+    // Declaramos los datos de conexion a la bd
+    private static final String driver="com.mysql.cj.jdbc.Driver";
+    private static final String user="root";
+    private static final String pass="adlai1999";
+    private static final String url="jdbc:mysql://localhost:3306/paciente?serverTimezone=America/Los_Angeles";
+    
     public void setMotor(motor m)
     {
         this.m=m;
     }
+     public void conector() {
+        // Reseteamos a null la conexion a la bd
+        con=null;
+        try{
+            Class.forName(driver);
+            // Nos conectamos a la bd
+            con= (Connection) DriverManager.getConnection(url, user, pass);
+            // Si la conexion fue exitosa mostramos un mensaje de conexion exitosa
+            if (con!=null){
+                jLabel1.setText("Conexion establecida");
+            }
+        }
+        // Si la conexion NO fue exitosa mostramos un mensaje de error
+        catch (ClassNotFoundException | SQLException e){
+            jLabel1.setText("Error de conexion" +" :"+ e);
+        }
+    }
+                       
+  
     /**
-     * Creates new form LoginView
+     * Creates new form conexionBD
      */
-    public LoginView() {
+    public conexionBD() {
         initComponents();
     }
 
@@ -33,25 +62,17 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        userText = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
-        passText = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        userText.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Conexion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userTextActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Usuario");
-
-        jLabel2.setText("Contraseña");
-
-        btnLogin.setText("Ingresar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,39 +81,30 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(userText, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                            .addComponent(passText)))
+                        .addGap(163, 163, 163)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(btnLogin)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                        .addGap(105, 105, 105)
+                        .addComponent(jButton1)))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLogin)
-                .addGap(88, 88, 88))
+                .addGap(100, 100, 100)
+                .addComponent(jButton1)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userTextActionPerformed
+        conector();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,30 +123,27 @@ public class LoginView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(conexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(conexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(conexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(conexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginView().setVisible(true);
+                new conexionBD().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField passText;
-    private javax.swing.JTextField userText;
     // End of variables declaration//GEN-END:variables
 private motor m;
 }

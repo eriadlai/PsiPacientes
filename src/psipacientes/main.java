@@ -5,6 +5,8 @@
  */
 package psipacientes;
 
+import BD.conexionBD;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
@@ -16,6 +18,14 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //========================
+        motor m = new motor();
+        //==========================
+        conexionBD conexiondb = new conexionBD();
+        m.setConexionDB(conexiondb);
+        conexiondb.setMotor(m);
+        m.showConexionBD();
+        
     }
     
 }
