@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `antecedentesclinicos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `antecedentesclinicos` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `clienteID` int NOT NULL,
   `enfermedadGrave` varchar(100) NOT NULL,
   `accidentes` varchar(100) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `antecedentesclinicos` (
   PRIMARY KEY (`id`),
   KEY `clienteID` (`clienteID`),
   CONSTRAINT `antecedentesclinicos_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `antecedentesclinicos` (
 
 LOCK TABLES `antecedentesclinicos` WRITE;
 /*!40000 ALTER TABLE `antecedentesclinicos` DISABLE KEYS */;
+INSERT INTO `antecedentesclinicos` VALUES (2,15,'','','','',''),(3,16,'','','','',''),(4,17,'','','','','');
 /*!40000 ALTER TABLE `antecedentesclinicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +54,7 @@ DROP TABLE IF EXISTS `antecedentesfamiliares`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `antecedentesfamiliares` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `clienteID` int NOT NULL,
   `psicologia` varchar(100) NOT NULL,
   `psiquiatra` varchar(100) NOT NULL,
@@ -61,7 +62,7 @@ CREATE TABLE `antecedentesfamiliares` (
   PRIMARY KEY (`id`),
   KEY `clienteID` (`clienteID`),
   CONSTRAINT `antecedentesfamiliares_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +71,7 @@ CREATE TABLE `antecedentesfamiliares` (
 
 LOCK TABLES `antecedentesfamiliares` WRITE;
 /*!40000 ALTER TABLE `antecedentesfamiliares` DISABLE KEYS */;
+INSERT INTO `antecedentesfamiliares` VALUES (2,15,'','',''),(3,16,'','',''),(4,17,'','','');
 /*!40000 ALTER TABLE `antecedentesfamiliares` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +98,7 @@ CREATE TABLE `cliente` (
   `asunto` varchar(50) NOT NULL,
   `objetivo` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +107,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Alejandro Alfonso','Magdaleno Baltazar',45,'JDateChooser','Licenciatura','Catolico','Abogado','Natacion','Mariano Azuela #315 Col. Aeropuerto','6462981432','Medios de internet y recomendacion de conocidos','Adiccion al tabaco','Dejar el tabaco'),(2,'Alejandro Fernando','Campos Martinez',17,'12/0/2007','Bachillerato','Ninguna','Estudiante','Beisball','Mariano Azuela #315','6461208876','Por medio de publicidad de redes sociales ','Fumador','Dejar de fumar'),(3,'juan','perez',7,'11/5/2021','Ninguno','alguna','','actividad','casa','523532','me entere de muchas maneras','un asunto','objetivo'),(4,'Juan Pablo','Espinoza Bartolero',33,'16/2/2000','Profesional','Satanico','Esrudiante','Ninguna','La Juarez','6462004321','canalizacion','Adiccion a la marihuana','Dejar la adiccion'),(5,'Mario Alberto','Escobedo Sanchez',13,'4/1/2008','Secundaria','Ninguna','Estudiante','Ninguna','UNa direccion','6461291212','Canalizado','Depresion','Controlar la depresion'),(6,'Mario Alberto','Escobedo Sanchez',13,'4/1/2008','Secundaria','Ninguna','Estudiante','Ninguna','UNa direccion','','Canalizado','Depresion','Controlar la depresion'),(7,'Mario Alberto','',13,'4/1/2008','Secundaria','Ninguna','Estudiante','Ninguna','UNa direccion','','Canalizado','Depresion','Controlar la depresion'),(8,'Juan Jose','Gonzales Estrada',10,'8/1/2021','Primaria','Catolico','Estudiante','Ninguna','Villas 1','123','Familia','Depresion','Controlar la Depresion'),(9,'Juan Jose','Martinez Sanchez',8,'15/1/2021','Bachillerato','algo','algo','algo','algo','12341','algo','algo','algo');
+INSERT INTO `cliente` VALUES (15,'Fernando','De la Cruz Ramirez',21,'23/8/1999','Licenciatura','Judio','Almacenista','Cocinar','Villa Bonita','6641232324','Internet','Adiccion','Dejar la adiccion'),(16,'Juan Alberto','Miranda Alvares',43,'23/1/1997','Profesional','Cristiano','Estudiante','Dormir','Sauzal','64623624','Internet','Psicosis','Mejorar y controlar el problema'),(17,'Juan Alberto','Martinez Escobedo',47,'18/1/1983','Ninguno','Catolico','Ninguna','Rezar','Juarez','6462362','Canalizado','Drogas','Dejar la adiccion');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +119,7 @@ DROP TABLE IF EXISTS `estadomental`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `estadomental` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `clienteID` int NOT NULL,
   `percepcionLenguaje` varchar(200) NOT NULL,
   `estadoEmocional` varchar(200) NOT NULL,
@@ -126,7 +128,7 @@ CREATE TABLE `estadomental` (
   PRIMARY KEY (`id`),
   KEY `clienteID` (`clienteID`),
   CONSTRAINT `estadomental_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,6 +137,7 @@ CREATE TABLE `estadomental` (
 
 LOCK TABLES `estadomental` WRITE;
 /*!40000 ALTER TABLE `estadomental` DISABLE KEYS */;
+INSERT INTO `estadomental` VALUES (2,15,'','','',''),(3,16,'','','',''),(4,17,'','','','');
 /*!40000 ALTER TABLE `estadomental` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +149,7 @@ DROP TABLE IF EXISTS `funcfamiliar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `funcfamiliar` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `clienteID` int NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `parentesco` varchar(50) NOT NULL,
@@ -155,7 +158,7 @@ CREATE TABLE `funcfamiliar` (
   PRIMARY KEY (`id`),
   KEY `clienteID` (`clienteID`),
   CONSTRAINT `funcfamiliar_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,6 +167,7 @@ CREATE TABLE `funcfamiliar` (
 
 LOCK TABLES `funcfamiliar` WRITE;
 /*!40000 ALTER TABLE `funcfamiliar` DISABLE KEYS */;
+INSERT INTO `funcfamiliar` VALUES (2,15,'','',0,''),(3,16,'','',0,''),(4,17,'','',0,'');
 /*!40000 ALTER TABLE `funcfamiliar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +179,7 @@ DROP TABLE IF EXISTS `habitos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `habitos` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `clienteID` int NOT NULL,
   `dream` varchar(200) NOT NULL,
   `alimenticio` varchar(200) NOT NULL,
@@ -183,7 +187,7 @@ CREATE TABLE `habitos` (
   PRIMARY KEY (`id`),
   KEY `clienteID` (`clienteID`),
   CONSTRAINT `habitos_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +196,7 @@ CREATE TABLE `habitos` (
 
 LOCK TABLES `habitos` WRITE;
 /*!40000 ALTER TABLE `habitos` DISABLE KEYS */;
+INSERT INTO `habitos` VALUES (2,15,'','',''),(3,16,'','',''),(4,17,'','','');
 /*!40000 ALTER TABLE `habitos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +208,7 @@ DROP TABLE IF EXISTS `historiasexual`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `historiasexual` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `clienteID` int NOT NULL,
   `abusoSexual` varchar(20) NOT NULL,
   `embarazo` varchar(20) NOT NULL,
@@ -214,7 +219,7 @@ CREATE TABLE `historiasexual` (
   PRIMARY KEY (`id`),
   KEY `clienteID` (`clienteID`),
   CONSTRAINT `historiasexual_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,6 +228,7 @@ CREATE TABLE `historiasexual` (
 
 LOCK TABLES `historiasexual` WRITE;
 /*!40000 ALTER TABLE `historiasexual` DISABLE KEYS */;
+INSERT INTO `historiasexual` VALUES (2,15,'','',0,'','',''),(3,16,'','',0,'','',''),(4,17,'','',0,'','','');
 /*!40000 ALTER TABLE `historiasexual` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,12 +240,16 @@ DROP TABLE IF EXISTS `problema`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `problema` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `evolucion` varchar(200) NOT NULL,
   `causas` varchar(200) NOT NULL,
   `acciones` varchar(200) NOT NULL,
-  `implicaciones` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `implicaciones` varchar(200) NOT NULL,
+  `clienteID` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `clienteID` (`clienteID`),
+  CONSTRAINT `problema_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,6 +258,7 @@ CREATE TABLE `problema` (
 
 LOCK TABLES `problema` WRITE;
 /*!40000 ALTER TABLE `problema` DISABLE KEYS */;
+INSERT INTO `problema` VALUES (7,'','','','',15),(8,'','','','',16),(9,'','','','',17);
 /*!40000 ALTER TABLE `problema` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +270,7 @@ DROP TABLE IF EXISTS `redsociales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `redsociales` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `clienteID` int NOT NULL,
   `social` varchar(200) NOT NULL,
   `laboral` varchar(200) NOT NULL,
@@ -267,7 +278,7 @@ CREATE TABLE `redsociales` (
   PRIMARY KEY (`id`),
   KEY `clienteID` (`clienteID`),
   CONSTRAINT `redsociales_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,6 +287,7 @@ CREATE TABLE `redsociales` (
 
 LOCK TABLES `redsociales` WRITE;
 /*!40000 ALTER TABLE `redsociales` DISABLE KEYS */;
+INSERT INTO `redsociales` VALUES (2,15,'','',''),(3,16,'','',''),(4,17,'','','');
 /*!40000 ALTER TABLE `redsociales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,14 +299,14 @@ DROP TABLE IF EXISTS `reportesesion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reportesesion` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `clienteID` int NOT NULL,
   `diagnostico` varchar(200) NOT NULL,
   `observaciones` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `clienteID` (`clienteID`),
   CONSTRAINT `reportesesion_ibfk_1` FOREIGN KEY (`clienteID`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -303,6 +315,7 @@ CREATE TABLE `reportesesion` (
 
 LOCK TABLES `reportesesion` WRITE;
 /*!40000 ALTER TABLE `reportesesion` DISABLE KEYS */;
+INSERT INTO `reportesesion` VALUES (2,15,'',''),(3,16,'',''),(4,17,'','');
 /*!40000 ALTER TABLE `reportesesion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-19 14:34:54
+-- Dump completed on 2021-01-20 14:41:05

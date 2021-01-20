@@ -56,7 +56,6 @@ public class addPacienteView extends javax.swing.JFrame {
         edadText = new javax.swing.JSpinner();
         nombreText = new javax.swing.JTextField();
         apellidoText = new javax.swing.JTextField();
-        religionText = new javax.swing.JTextField();
         asuntoText = new javax.swing.JTextField();
         direccionText = new javax.swing.JTextField();
         telefonoText = new javax.swing.JTextField();
@@ -65,6 +64,7 @@ public class addPacienteView extends javax.swing.JFrame {
         objText = new javax.swing.JTextField();
         dateText = new com.toedter.calendar.JDateChooser();
         clear = new javax.swing.JButton();
+        religionText = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +123,8 @@ public class addPacienteView extends javax.swing.JFrame {
             }
         });
 
+        religionText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristiano", "Catolico", "Judio", "Otro" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,15 +139,15 @@ public class addPacienteView extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(jLabel5)
                             .addComponent(edadText, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(asuntoText, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(religionText, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lvlText, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(religionText, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(asuntoText, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lvlText, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(79, 79, 79)
@@ -228,9 +230,9 @@ public class addPacienteView extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(religionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(actText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(religionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13))
@@ -244,7 +246,7 @@ public class addPacienteView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(volverMenu)
                     .addComponent(clear))
@@ -261,7 +263,7 @@ public class addPacienteView extends javax.swing.JFrame {
         direccionText.setText("");
         telefonoText.setText("");
         ocupacionText.setText("");
-        religionText.setText("");
+        religionText.setSelectedItem("");
         actText.setText("");
         asuntoText.setText("");
         objText.setText("");
@@ -283,14 +285,14 @@ public class addPacienteView extends javax.swing.JFrame {
             String d = Integer.toString(dateText.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mes = Integer.toString(dateText.getCalendar().get(Calendar.MONTH) + 1);
             String y = Integer.toString(dateText.getCalendar().get(Calendar.YEAR));
-            if (m.insertPaciente(nombreText.getText(), apellidoText.getText(), (int) edadText.getValue(), m.getFecha(d, mes, y), lvlText.getSelectedItem().toString(), religionText.getText(),
+            if (m.insertPaciente(nombreText.getText(), apellidoText.getText(), (int) edadText.getValue(), m.getFecha(d, mes, y), lvlText.getSelectedItem().toString(), religionText.getSelectedItem().toString(),
                         ocupacionText.getText(), actText.getText(), direccionText.getText(), telefonoText.getText(), servicioText.getText(), asuntoText.getText(), objText.getText())==true) {
                    nombreText.setText("");
                     apellidoText.setText("");
                     direccionText.setText("");
                     telefonoText.setText("");
                     ocupacionText.setText("");
-                    religionText.setText("");
+                  religionText.setSelectedItem("");
                     actText.setText("");
                     asuntoText.setText("");
                     objText.setText("");
@@ -313,7 +315,7 @@ public class addPacienteView extends javax.swing.JFrame {
                     direccionText.setText("");
                     telefonoText.setText("");
                     ocupacionText.setText("");
-                    religionText.setText("");
+                    religionText.setSelectedItem("");
                     actText.setText("");
                     asuntoText.setText("");
                     objText.setText("");
@@ -385,7 +387,7 @@ public class addPacienteView extends javax.swing.JFrame {
     private javax.swing.JTextField nombreText;
     private javax.swing.JTextField objText;
     private javax.swing.JTextField ocupacionText;
-    private javax.swing.JTextField religionText;
+    private javax.swing.JComboBox<String> religionText;
     private javax.swing.JTextArea servicioText;
     private javax.swing.JTextField telefonoText;
     private javax.swing.JButton volverMenu;

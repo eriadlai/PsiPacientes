@@ -50,18 +50,34 @@ public class motor {
         }
         
     }
-    public void deleteUsuario(String usuario,String password)
+    public void deletePaciente(String nombre,String apellido)
     {
-        querys.deleteUsuario(usuario, password);
+        querys.deletePaciente(nombre, apellido);
     }
-    public void updateUsuario(String usuario, String password,String newUsuario,String newPassword)
+    public void updatePaciente(int id, String nombre, String apellido, int edad, String asunto)
     {
-        querys.updateUsuario(usuario, password,newUsuario,newPassword);
+        querys.updatePaciente(id, nombre, apellido, edad, asunto);
+    }
+    public int buscarId(String nombre, String apellido)
+    {
+        return querys.buscarId(nombre, apellido);
     }
   public ResultSet searchPacientes()
   {
       
       return querys.searchPacientes();
+  }
+  public ResultSet searchPacientesNombre(String nombre)
+  {
+      return querys.searchPacientesNombre(nombre);
+  }
+  public ResultSet searchPacientesApellido(String apellido)
+  {
+      return querys.searchPacientesApellido(apellido);
+  }
+  public ResultSet searchPacientesEdad(int edad)
+  {
+      return querys.searchEdad(edad);
   }
     //==========SET CONEXIONES CON CLASES VIEW=============
     

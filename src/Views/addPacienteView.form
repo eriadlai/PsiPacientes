@@ -33,16 +33,16 @@
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="edadText" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="asuntoText" alignment="0" max="32767" attributes="0"/>
-                              <Component id="religionText" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lvlText" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="agregar" min="-2" pref="152" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="religionText" alignment="0" max="32767" attributes="0"/>
+                              <Component id="asuntoText" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lvlText" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -154,10 +154,10 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="religionText" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="actText" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="religionText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -174,7 +174,7 @@
                   <Component id="agregar" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <EmptySpace pref="7" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="volverMenu" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="clear" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -306,8 +306,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="apellidoText">
     </Component>
-    <Component class="javax.swing.JTextField" name="religionText">
-    </Component>
     <Component class="javax.swing.JTextField" name="asuntoText">
     </Component>
     <Component class="javax.swing.JTextField" name="direccionText">
@@ -332,6 +330,21 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="religionText">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Cristiano"/>
+            <StringItem index="1" value="Catolico"/>
+            <StringItem index="2" value="Judio"/>
+            <StringItem index="3" value="Otro"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

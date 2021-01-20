@@ -5,6 +5,7 @@
  */
 package Views;
 
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import psipacientes.motor;
@@ -22,10 +23,10 @@ public class pacientesView extends javax.swing.JFrame {
         this.m = m;
     }
 
-    public void showTableData() {
+    public void showTableData(ResultSet rs) {
         try {
 
-            tablaPacientes.setModel(DbUtils.resultSetToTableModel(m.searchPacientes()));
+            tablaPacientes.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
 
@@ -37,7 +38,7 @@ public class pacientesView extends javax.swing.JFrame {
      */
     public pacientesView() {
         initComponents();
-        
+       
     }
 
     /**
@@ -57,18 +58,15 @@ public class pacientesView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         apellidoText = new javax.swing.JTextField();
         searchApellido = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        dateText = new com.toedter.calendar.JDateChooser();
-        searchDate = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        lvlText = new javax.swing.JTextField();
-        searchLvl = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        asuntoText = new javax.swing.JTextField();
-        searchAsunto = new javax.swing.JButton();
         editar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
         volver = new javax.swing.JButton();
+        actualizar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        searchEdad = new javax.swing.JButton();
+        edadText = new javax.swing.JSpinner();
+        deleteName = new javax.swing.JLabel();
+        deleteApellido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,38 +81,65 @@ public class pacientesView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPacientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaPacientes);
 
-        jLabel1.setText("Ordenar por nombre");
+        jLabel1.setText("Buscar por nombre");
 
         searchNombre.setText("Buscar");
+        searchNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchNombreActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setText("Ordenar por apellidos");
+        jLabel2.setText("Buscar por apellido");
 
         searchApellido.setText("Buscar");
-
-        jLabel3.setText("Ordenar por fecha de ingreso");
-
-        dateText.setDateFormatString("d-MM-yyyy");
-
-        searchDate.setText("Buscar");
-
-        jLabel4.setText("Ordenar por escolaridad");
-
-        searchLvl.setText("Buscar");
-
-        jLabel5.setText("Ordenar por asunto");
-
-        searchAsunto.setText("Buscar");
+        searchApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchApellidoActionPerformed(evt);
+            }
+        });
 
         editar.setText("Editar");
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
+            }
+        });
 
         eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
 
         volver.setText("Volver");
         volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverActionPerformed(evt);
+            }
+        });
+
+        actualizar.setText("Actualizar Tabla");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Buscar por edad");
+
+        searchEdad.setText("Buscar");
+        searchEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchEdadActionPerformed(evt);
             }
         });
 
@@ -124,47 +149,46 @@ public class pacientesView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchDate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(apellidoText, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                            .addComponent(nombreText))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(searchApellido, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(asuntoText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                            .addComponent(lvlText, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchLvl, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(searchAsunto, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(editar)
-                                .addGap(18, 18, 18)
-                                .addComponent(eliminar)
-                                .addGap(18, 18, 18)
-                                .addComponent(volver)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(apellidoText, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                    .addComponent(nombreText))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(searchNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(searchApellido, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(edadText, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(searchEdad))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(editar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(eliminar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(volver))
+                                    .addComponent(actualizar))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(deleteApellido)
+                            .addComponent(deleteName))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
@@ -178,26 +202,19 @@ public class pacientesView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchApellido))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(6, 6, 6)
-                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(searchDate))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lvlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchLvl))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(asuntoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchAsunto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(edadText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchEdad))
+                .addGap(32, 32, 32)
+                .addComponent(actualizar)
+                .addGap(62, 62, 62)
+                .addComponent(deleteName)
+                .addGap(18, 18, 18)
+                .addComponent(deleteApellido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editar)
                     .addComponent(eliminar)
@@ -213,6 +230,53 @@ public class pacientesView extends javax.swing.JFrame {
         m.openMenu();
         m.closePacientes();
     }//GEN-LAST:event_volverActionPerformed
+
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        // TODO add your handling code here
+        //============PROBLEMA AL EDITAR, PARSEO STRING-INTEGER FALLANDO, SELECCION FALLANDO
+        //============METODO DE EDICION NO CONVENCE.
+        System.out.println( (String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 0).toString());
+        System.out.println( (String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 1).toString());
+        System.out.println( (String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 3).toString());
+        age=Integer.parseInt((String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 2).toString());
+        m.updatePaciente(saveId,
+                (String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 0).toString(),
+                (String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 1).toString(),
+                age, 
+                (String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 3).toString());
+      
+    }//GEN-LAST:event_editarActionPerformed
+
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        // TODO add your handling code here:
+         showTableData(m.searchPacientes());
+    }//GEN-LAST:event_actualizarActionPerformed
+
+    private void searchNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNombreActionPerformed
+        // TODO add your handling code here:
+       showTableData( m.searchPacientesNombre(nombreText.getText()));
+    }//GEN-LAST:event_searchNombreActionPerformed
+
+    private void searchApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchApellidoActionPerformed
+        // TODO add your handling code here:
+       showTableData( m.searchPacientesApellido(apellidoText.getText()));
+    }//GEN-LAST:event_searchApellidoActionPerformed
+
+    private void searchEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEdadActionPerformed
+        // TODO add your handling code here:
+       showTableData( m.searchPacientesEdad((int) edadText.getValue()));
+    }//GEN-LAST:event_searchEdadActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+        m.deletePaciente((String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), tablaPacientes.getSelectedColumn()),(String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), tablaPacientes.getSelectedColumn()+1));
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    private void tablaPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPacientesMouseClicked
+        // TODO add your handling code here:
+           saveId=m.buscarId((String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), tablaPacientes.getSelectedColumn()),(String) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), tablaPacientes.getSelectedColumn()+1));
+
+    }//GEN-LAST:event_tablaPacientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -250,26 +314,25 @@ public class pacientesView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar;
     private javax.swing.JTextField apellidoText;
-    private javax.swing.JTextField asuntoText;
-    private com.toedter.calendar.JDateChooser dateText;
+    private javax.swing.JLabel deleteApellido;
+    private javax.swing.JLabel deleteName;
+    private javax.swing.JSpinner edadText;
     private javax.swing.JButton editar;
     private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField lvlText;
     private javax.swing.JTextField nombreText;
     private javax.swing.JButton searchApellido;
-    private javax.swing.JButton searchAsunto;
-    private javax.swing.JButton searchDate;
-    private javax.swing.JButton searchLvl;
+    private javax.swing.JButton searchEdad;
     private javax.swing.JButton searchNombre;
     private javax.swing.JTable tablaPacientes;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 private motor m;
+private int saveId;
+private int age;
 }
