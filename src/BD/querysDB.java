@@ -119,7 +119,7 @@ public class querysDB {
                     pst.setString(12, asunto);
                     pst.setString(13, objetivo);
                     pst.executeUpdate();
-                    setDatosPaciente(buscarId(nombre,apellido));
+                    setDatosPaciente(buscarId(nombre, apellido));
                     JOptionPane.showMessageDialog(null, "inserted successfully");
                     return true;
                 }
@@ -131,6 +131,7 @@ public class querysDB {
         }
 
     }
+
     public int buscarId(String nombre, String apellido) {
         try {
             String sql2 = "SELECT id FROM cliente WHERE nombre=? AND apellido=?";
@@ -143,162 +144,162 @@ public class querysDB {
             }
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
-            
+
         }
         return 0;
     }
-    
-    public void setDatosPaciente(int id)
-    {
-       try
-       {
+
+    public void setDatosPaciente(int id) {
+        try {
             String sql = "INSERT INTO problema"
-                            + "(evolucion,causas,acciones,implicaciones,clienteID)"
-                            + "VALUES (?,?,?,?,?)";
-                    pst = con.prepareStatement(sql);
-                    pst.setString(1, "");
-                    pst.setString(2, "");
-                    pst.setString(3, "");
-                    pst.setString(4, "");
-                    pst.setInt(5, id);
-                    pst.executeUpdate();
-                    String sql2 = "INSERT INTO funcfamiliar"
-                            + "(clienteID,nombre,parentesco,edad,ocupacion)"
-                            + "VALUES (?,?,?,?,?)";
-                    pst = con.prepareStatement(sql2);
-                    pst.setString(5, "");
-                    pst.setString(2, "");
-                    pst.setInt(4, 0);
-                    pst.setString(3, "");
-                    pst.setInt(1, id);
-                    pst.executeUpdate();
-                    String sql3 = "INSERT INTO redsociales"
-                            + "(clienteID,social,laboral,vivienda)"
-                            + "VALUES (?,?,?,?)";
-                    pst = con.prepareStatement(sql3);
-                    pst.setString(2, "");
-                    pst.setString(3, "");
-                    pst.setString(4, "");
-                    pst.setInt(1, id);
-                    pst.executeUpdate();
-                    String sql4 = "INSERT INTO historiasexual"
-                            + "(clienteID,abusoSexual,embarazo,edad,prefSexual,traumas,infoTraumas)"
-                            + "VALUES (?,?,?,?,?,?,?)";
-                    pst = con.prepareStatement(sql4);
-                    pst.setString(2, "");
-                    pst.setString(3, "");
-                    pst.setInt(4, 0);
-                    pst.setString(5, "");
-                    pst.setString(6, "");
-                    pst.setString(7, "");
-                    pst.setInt(1, id);
-                    pst.executeUpdate();
-                     String sql5 = "INSERT INTO habitos"
-                            + "(clienteID,dream,alimenticio,antPsicologicos)"
-                            + "VALUES (?,?,?,?)";
-                    pst = con.prepareStatement(sql5);
-                    pst.setString(2, "");
-                    pst.setString(3, "");
-                    pst.setString(4, "");
-                    pst.setInt(1, id);
-                    pst.executeUpdate();
-                      String sql6 = "INSERT INTO antecedentesclinicos"
-                            + "(clienteID,enfermedadGrave,accidentes,medicamento,intQuirurgica,dispAuxiliar)"
-                            + "VALUES (?,?,?,?,?,?)";
-                    pst = con.prepareStatement(sql6);
-                    pst.setString(2, "");
-                    pst.setString(3, "");
-                    pst.setString(4, "");
-                    pst.setString(5,"");
-                    pst.setString(6,"");
-                    pst.setInt(1, id);
-                    pst.executeUpdate();
-                      String sql7 = "INSERT INTO antecedentesfamiliares"
-                            + "(clienteID,psicologia,psiquiatra,patologia)"
-                            + "VALUES (?,?,?,?)";
-                    pst = con.prepareStatement(sql7);
-                    pst.setString(2, "");
-                    pst.setString(3, "");
-                    pst.setString(4, "");
-                    pst.setInt(1, id);
-                    pst.executeUpdate();
-                      String sql8 = "INSERT INTO estadomental"
-                            + "(clienteID,percepcionLenguaje,estadoEmocional,contactoRealidad,higienePersonal)"
-                            + "VALUES (?,?,?,?,?)";
-                    pst = con.prepareStatement(sql8);
-                    pst.setString(2, "");
-                    pst.setString(3, "");
-                    pst.setString(4, "");
-                    pst.setString(5,"");
-                    pst.setInt(1, id);
-                    pst.executeUpdate();
-                      String sql9 = "INSERT INTO reportesesion"
-                            + "(clienteID,diagnostico,observaciones)"
-                            + "VALUES (?,?,?)";
-                    pst = con.prepareStatement(sql9);
-                    pst.setString(2, "");
-                    pst.setString(3, "");
-                    pst.setInt(1, id);
-                    pst.executeUpdate();
-                    
-       } catch (SQLException | HeadlessException ex) {
-            JOptionPane.showMessageDialog(null, ex);}
-    }
-    public void deletePaciente(String nombre, String apellido) {
-        int id=buscarId(nombre,apellido);
-       int reply = JOptionPane.showConfirmDialog(null, "SEGURO DE ELIMINAR LOS DATOS DEL PACIENTE: "+""+nombre+" "+apellido, "Confirmacion", JOptionPane.YES_NO_OPTION);
-            if (reply == JOptionPane.YES_OPTION) {
-                 try {
-               String sql2 = "DELETE FROM problema WHERE clienteID=?";
-            pst = con.prepareStatement(sql2);
-            pst.setInt(1,id);
-            pst.executeUpdate();
-            String sql3 = "DELETE FROM funcfamiliar WHERE clienteID=?";
-            pst = con.prepareStatement(sql3);
-             pst.setInt(1,id);
-             pst.executeUpdate();
-            String sql4 = "DELETE FROM redsociales WHERE clienteID=?";
-            pst = con.prepareStatement(sql4);
-            pst.setInt(1,id);
-           pst.executeUpdate();
-            String sql5 = "DELETE FROM historiasexual WHERE clienteID=?";
-            pst = con.prepareStatement(sql5);
-            pst.setInt(1,id);
-           pst.executeUpdate();
-            String sql6 = "DELETE FROM habitos WHERE clienteID=?";
-            pst = con.prepareStatement(sql6);
-          pst.setInt(1,id);
-           pst.executeUpdate();
-            String sql7 = "DELETE FROM antecedentesclinicos WHERE clienteID=?";
-            pst = con.prepareStatement(sql7);
-           pst.setInt(1,id);
-          pst.executeUpdate();
-            String sql8 = "DELETE FROM antecedentesfamiliares WHERE clienteID=?";
-            pst = con.prepareStatement(sql8);
-             pst.setInt(1,id);
-          pst.executeUpdate();
-            String sql9 = "DELETE FROM estadomental WHERE clienteID=?";
-            pst = con.prepareStatement(sql9);
-            pst.setInt(1,id);
-        pst.executeUpdate();
-            String sql10 = "DELETE FROM reportesesion WHERE clienteID=?";
-            pst = con.prepareStatement(sql10);
-            pst.setInt(1,id);
-           pst.executeUpdate();
-            String sql = "DELETE FROM cliente WHERE id=?";
+                    + "(evolucion,causas,acciones,implicaciones,clienteID)"
+                    + "VALUES (?,?,?,?,?)";
             pst = con.prepareStatement(sql);
-            pst.setInt(1,id);
-         pst.executeUpdate();
-          
-            
-            JOptionPane.showMessageDialog(null, "PACIENTE ELIMINADO CON EXITO!");
+            pst.setString(1, "");
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setString(4, "");
+            pst.setInt(5, id);
+            pst.executeUpdate();
+            String sql2 = "INSERT INTO funcfamiliar"
+                    + "(clienteID,nombre,parentesco,edad,ocupacion)"
+                    + "VALUES (?,?,?,?,?)";
+            pst = con.prepareStatement(sql2);
+            pst.setString(5, "");
+            pst.setString(2, "");
+            pst.setInt(4, 0);
+            pst.setString(3, "");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            String sql3 = "INSERT INTO redsociales"
+                    + "(clienteID,social,laboral,vivienda)"
+                    + "VALUES (?,?,?,?)";
+            pst = con.prepareStatement(sql3);
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setString(4, "");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            String sql4 = "INSERT INTO historiasexual"
+                    + "(clienteID,abusoSexual,embarazo,edad,prefSexual,traumas,infoTraumas)"
+                    + "VALUES (?,?,?,?,?,?,?)";
+            pst = con.prepareStatement(sql4);
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setInt(4, 0);
+            pst.setString(5, "");
+            pst.setString(6, "");
+            pst.setString(7, "");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            String sql5 = "INSERT INTO habitos"
+                    + "(clienteID,dream,alimenticio,antPsicologicos)"
+                    + "VALUES (?,?,?,?)";
+            pst = con.prepareStatement(sql5);
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setString(4, "");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            String sql6 = "INSERT INTO antecedentesclinicos"
+                    + "(clienteID,enfermedadGrave,accidentes,medicamento,intQuirurgica,dispAuxiliar)"
+                    + "VALUES (?,?,?,?,?,?)";
+            pst = con.prepareStatement(sql6);
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setString(4, "");
+            pst.setString(5, "");
+            pst.setString(6, "");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            String sql7 = "INSERT INTO antecedentesfamiliares"
+                    + "(clienteID,psicologia,psiquiatra,patologia)"
+                    + "VALUES (?,?,?,?)";
+            pst = con.prepareStatement(sql7);
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setString(4, "");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            String sql8 = "INSERT INTO estadomental"
+                    + "(clienteID,percepcionLenguaje,estadoEmocional,contactoRealidad,higienePersonal)"
+                    + "VALUES (?,?,?,?,?)";
+            pst = con.prepareStatement(sql8);
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setString(4, "");
+            pst.setString(5, "");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            String sql9 = "INSERT INTO reportesesion"
+                    + "(clienteID,diagnostico,observaciones)"
+                    + "VALUES (?,?,?)";
+            pst = con.prepareStatement(sql9);
+            pst.setString(2, "");
+            pst.setString(3, "");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+
         } catch (SQLException | HeadlessException ex) {
-            JOptionPane.showMessageDialog(null, "PACIENTE INEXISTENTE, NO SE COMPLETO LA ELIMINACION");
+            JOptionPane.showMessageDialog(null, ex);
         }
-            } else {
-                JOptionPane.showMessageDialog(null, "CANCELANDO ELIMINACION");
+    }
+
+    public void deletePaciente(int id) {
+        String nombre = getNombre(id);
+        String apellido = getApellido(id);
+        int reply = JOptionPane.showConfirmDialog(null, "SEGURO DE ELIMINAR LOS DATOS DEL PACIENTE: " + "" + nombre + " " + apellido, "Confirmacion", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            try {
+                String sql2 = "DELETE FROM problema WHERE clienteID=?";
+                pst = con.prepareStatement(sql2);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql3 = "DELETE FROM funcfamiliar WHERE clienteID=?";
+                pst = con.prepareStatement(sql3);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql4 = "DELETE FROM redsociales WHERE clienteID=?";
+                pst = con.prepareStatement(sql4);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql5 = "DELETE FROM historiasexual WHERE clienteID=?";
+                pst = con.prepareStatement(sql5);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql6 = "DELETE FROM habitos WHERE clienteID=?";
+                pst = con.prepareStatement(sql6);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql7 = "DELETE FROM antecedentesclinicos WHERE clienteID=?";
+                pst = con.prepareStatement(sql7);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql8 = "DELETE FROM antecedentesfamiliares WHERE clienteID=?";
+                pst = con.prepareStatement(sql8);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql9 = "DELETE FROM estadomental WHERE clienteID=?";
+                pst = con.prepareStatement(sql9);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql10 = "DELETE FROM reportesesion WHERE clienteID=?";
+                pst = con.prepareStatement(sql10);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                String sql = "DELETE FROM cliente WHERE id=?";
+                pst = con.prepareStatement(sql);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "PACIENTE ELIMINADO CON EXITO!");
+            } catch (SQLException | HeadlessException ex) {
+                JOptionPane.showMessageDialog(null, "PACIENTE INEXISTENTE, NO SE COMPLETO LA ELIMINACION");
             }
-       
+        } else {
+            JOptionPane.showMessageDialog(null, "CANCELANDO ELIMINACION");
+        }
+
     }
 
     public void updatePaciente(int id, String nombre, String apellido, int edad, String asunto) {
@@ -327,9 +328,354 @@ public class querysDB {
         }
     }
 
+    //======================================================================================
+    public String getNombre(int id) {
+        String nombre = "";
+        try {
+            String sql2 = "SELECT nombre FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                nombre = rs.getString("nombre");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
+        return nombre;
+    }
+
+    public String getApellido(int id) {
+        String apellido = "";
+        try {
+            String sql2 = "SELECT apellido FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                apellido = rs.getString("apellido");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return apellido;
+    }
+
+    public int getEdad(int id) {
+        int edad = 0;
+        try {
+            String sql2 = "SELECT edad FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                edad = rs.getInt("edad");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return edad;
+    }
+
+    public String getDate(int id) {
+        String date = "";
+        try {
+            String sql2 = "SELECT nacimiento FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                date = rs.getString("nacimiento");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return date;
+    }
+
+    public String getLvl(int id) {
+        String escolaridad = "";
+        try {
+            String sql2 = "SELECT escolaridad FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                escolaridad = rs.getString("escolaridad");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return escolaridad;
+    }
+
+    public String getReligion(int id) {
+        String religion = "";
+        try {
+            String sql2 = "SELECT religion FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                religion = rs.getString("religion");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return religion;
+    }
+
+    public String getOcupacion(int id) {
+        String ocupacion = "";
+        try {
+            String sql2 = "SELECT ocupacion FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                ocupacion = rs.getString("ocupacion");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return ocupacion;
+    }
+
+    public String getAct(int id) {
+        String act = "";
+        try {
+            String sql2 = "SELECT actExtra FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                act = rs.getString("actExtra");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return act;
+    }
+
+    public String getDireccion(int id) {
+        String direccion = "";
+        try {
+            String sql2 = "SELECT direccion FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                direccion = rs.getString("direccion");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return direccion;
+    }
+
+    public String getTelefono(int id) {
+        String telefono = "";
+        try {
+            String sql2 = "SELECT telefono FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                telefono = rs.getString("telefono");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return telefono;
+    }
+
+    public String getServicio(int id) {
+        String servicio = "";
+        try {
+            String sql2 = "SELECT servicio FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                servicio = rs.getString("servicio");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return servicio;
+    }
+
+    public String getAsunto(int id) {
+        String asunto = "";
+        try {
+            String sql2 = "SELECT asunto FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                asunto = rs.getString("asunto");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return asunto;
+    }
+
+    public String getObjetivo(int id) {
+        String objetivo = "";
+        try {
+            String sql2 = "SELECT objetivo FROM cliente WHERE id=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                objetivo = rs.getString("objetivo");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return objetivo;
+    }
+
+    //==================================================================
+    public String getEvolucion(int id) {
+        String dato = "";
+        try {
+            String sql2 = "SELECT evolucion FROM problema WHERE clienteID=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                dato = rs.getString("evolucion");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return dato;
+    }
+
+    public String getCausas(int id) {
+        String dato = "";
+        try {
+            String sql2 = "SELECT causas FROM problema WHERE clienteID=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                dato = rs.getString("causas");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return dato;
+    }
+
+    public String getAcciones(int id) {
+        String dato = "";
+        try {
+            String sql2 = "SELECT acciones FROM problema WHERE clienteID=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                dato = rs.getString("acciones");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return dato;
+    }
+
+    public String getImplicaciones(int id) {
+        String dato = "";
+        try {
+            String sql2 = "SELECT implicaciones FROM problema WHERE clienteID=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                dato = rs.getString("implicaciones");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return dato;
+    }
+
+    public String getSocial(int id) {
+        String dato = "";
+        try {
+            String sql2 = "SELECT social FROM redsociales WHERE clienteID=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                dato = rs.getString("social");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return dato;
+    }
+
+    public String getLaboral(int id) {
+        String dato = "";
+        try {
+            String sql2 = "SELECT laboral FROM redsociales WHERE clienteID=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                dato = rs.getString("laboral");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return dato;
+    }
+
+    public String getVivienda(int id) {
+        String dato = "";
+        try {
+            String sql2 = "SELECT vivienda FROM redsociales WHERE clienteID=?";
+            pst = con.prepareStatement(sql2);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                dato = rs.getString("vivienda");
+            }
+
+        } catch (SQLException | HeadlessException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return dato;
+    }
+    //=========================================================================================
+
+    //=========================================================================================
     public ResultSet searchPacientes() {
         try {
-            String sql = "SELECT nombre,apellido,edad,asunto FROM cliente";
+            String sql = "SELECT id,nombre,apellido,edad,asunto FROM cliente";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -342,7 +688,7 @@ public class querysDB {
 
     public ResultSet searchPacientesNombre(String nombre) {
         try {
-           String sql = "SELECT nombre,apellido,edad,asunto FROM cliente WHERE nombre LIKE '%"+nombre+"%'";
+            String sql = "SELECT nombre,apellido,edad,asunto FROM cliente WHERE nombre LIKE '%" + nombre + "%'";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -355,7 +701,7 @@ public class querysDB {
 
     public ResultSet searchPacientesApellido(String apellido) {
         try {
-           String sql = "SELECT nombre,apellido,edad,asunto FROM cliente WHERE apellido LIKE '%"+apellido+"%'";
+            String sql = "SELECT nombre,apellido,edad,asunto FROM cliente WHERE apellido LIKE '%" + apellido + "%'";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -371,7 +717,7 @@ public class querysDB {
             JOptionPane.showMessageDialog(null, "DATO INVALIDO");
         } else {
             try {
-                String sql = "SELECT nombre,apellido,edad,asunto FROM cliente WHERE edad LIKE '%"+edad+"%'";
+                String sql = "SELECT nombre,apellido,edad,asunto FROM cliente WHERE edad LIKE '%" + edad + "%'";
                 pst = con.prepareStatement(sql);
                 rs = pst.executeQuery();
 

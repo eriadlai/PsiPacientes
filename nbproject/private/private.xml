@@ -4,10 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-alfav2/src/psipacientes/main.java</file>
-            <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-alfav2/src/Views/addPacienteView.java</file>
             <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-alfav2/src/Views/pacientesView.java</file>
             <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-alfav2/src/psipacientes/motor.java</file>
             <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-alfav2/src/BD/querysDB.java</file>
+            <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-alfav2/src/Views/principalView.java</file>
         </group>
     </open-files>
 </project-private>

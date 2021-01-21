@@ -10,6 +10,7 @@ import Views.LoginView;
 import Views.addPacienteView;
 import Views.menuView;
 import Views.pacientesView;
+import Views.principalView;
 
 /**
  *
@@ -30,12 +31,16 @@ public class main {
         menuView menuv = new menuView();
         addPacienteView addPaciente = new addPacienteView();
         pacientesView pacientesv = new pacientesView();
+        principalView principal = new principalView();
+        
         
         m.setMenuView(menuv);
         m.setQuerysDB(querys);
         m.setLoginView(login);
         m.setAddPacienteView(addPaciente);
         m.setPacientesView(pacientesv);
+        m.setPrincipalView(principal);
+        principal.setMotor(m);
         pacientesv.setMotor(m);
         addPaciente.SetMotor(m);
         querys.setMotor(m);
