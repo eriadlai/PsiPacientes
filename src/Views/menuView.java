@@ -96,6 +96,7 @@ public class menuView extends javax.swing.JFrame {
 
     private void verPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPacientesActionPerformed
         // TODO add your handling code here:
+        m.inicio();
         m.openPacientes();
         m.closeMenu();
     }//GEN-LAST:event_verPacientesActionPerformed

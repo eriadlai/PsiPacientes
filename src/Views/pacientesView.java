@@ -16,9 +16,6 @@ import psipacientes.motor;
  */
 public class pacientesView extends javax.swing.JFrame {
 
-    
-    
-    
     public void setMotor(motor m) {
         this.m = m;
     }
@@ -33,12 +30,17 @@ public class pacientesView extends javax.swing.JFrame {
         }
 
     }
+
     /**
      * Creates new form pacientesView
      */
     public pacientesView() {
         initComponents();
-       
+    }
+
+    public pacientesView(ResultSet rs) {
+        initComponents();
+        showTableData(rs);
     }
 
     /**
@@ -239,41 +241,48 @@ public class pacientesView extends javax.swing.JFrame {
 
     private void goPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goPrincipalActionPerformed
         // TODO add your handling code here
-        m.setId(saveId);
-      m.openPrincipal();
-      m.closePacientes();
-      
+        if (saveId == 0) {
+            JOptionPane.showMessageDialog(null, "FAVOR DE SELECCIONAR UN PACIENTE!.");
+        } else {
+            m.setId(saveId);
+            m.inicioPrincipal();
+            m.openPrincipal();
+            m.closePacientes();
+        }
+
+
     }//GEN-LAST:event_goPrincipalActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         // TODO add your handling code here:
-         showTableData(m.searchPacientes());
+        showTableData(m.searchPacientes());
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void searchNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNombreActionPerformed
         // TODO add your handling code here:
-       showTableData( m.searchPacientesNombre(nombreText.getText()));
+        showTableData(m.searchPacientesNombre(nombreText.getText()));
     }//GEN-LAST:event_searchNombreActionPerformed
 
     private void searchApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchApellidoActionPerformed
         // TODO add your handling code here:
-       showTableData( m.searchPacientesApellido(apellidoText.getText()));
+        showTableData(m.searchPacientesApellido(apellidoText.getText()));
     }//GEN-LAST:event_searchApellidoActionPerformed
 
     private void searchEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEdadActionPerformed
         // TODO add your handling code here:
-       showTableData( m.searchPacientesEdad((int) edadText.getValue()));
+        showTableData(m.searchPacientesEdad((int) edadText.getValue()));
     }//GEN-LAST:event_searchEdadActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         // TODO add your handling code here:
         m.deletePaciente(saveId);
+        showTableData(m.searchPacientes());
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void tablaPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPacientesMouseClicked
         // TODO add your handling code here:
-           saveId=(int) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 0);
-           deleteName.setText(saveId+"");
+        saveId = (int) tablaPacientes.getValueAt(tablaPacientes.getSelectedRow(), 0);
+        deleteName.setText(saveId + "");
 
     }//GEN-LAST:event_tablaPacientesMouseClicked
 
@@ -332,5 +341,5 @@ public class pacientesView extends javax.swing.JFrame {
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 private motor m;
-private int saveId;
+    private int saveId;
 }

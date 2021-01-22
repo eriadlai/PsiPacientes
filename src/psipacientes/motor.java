@@ -52,8 +52,21 @@ public class motor {
         querys.deletePaciente(id);
     }
 
-    public void updatePaciente(int id, String nombre, String apellido, int edad, String asunto) {
-        querys.updatePaciente(id, nombre, apellido, edad, asunto);
+    public void updatePaciente(int id, String nombre, String apellido, int edad, String nacimiento, String escolaridad,
+            String religion, String ocupacion, String actExtra, String direccion, String telefono, String asunto, String objetivo) {
+        querys.updatePaciente(id, nombre, apellido, edad, nacimiento, escolaridad, religion, ocupacion, actExtra, direccion, telefono, asunto, objetivo);
+    }
+
+    public void updateProblema(int id, String evolucion, String causas, String acciones, String implicaciones) {
+        querys.updateProblema(id, evolucion, causas, acciones, implicaciones);
+    }
+    public void updateSociales(int id, String social, String laboral, String vivienda)
+    {
+        querys.updateSociales(id, social, laboral, vivienda);
+    }
+    public void updateSexual(int id, String abuso, String embarazo, int edad, String preferencia, String traumas, String infoTraumas)
+    {
+        querys.updateSexual(id, abuso, embarazo, edad, preferencia, traumas, infoTraumas);
     }
 
     public int buscarId(String nombre, String apellido) {
@@ -234,6 +247,124 @@ public class motor {
 
     public String getVivienda(int id) {
         return querys.getVivienda(id);
+    }
+
+    //===========================================================================================
+    public String getAbuso(int id) {
+        return querys.getAbuso(id);
+    }
+
+    public String getEmbarazo(int id) {
+        return querys.getEmbarazo(id);
+    }
+
+    public int getEdadSexual(int id) {
+        return querys.getEdadSexual(id);
+    }
+
+    public String getPref(int id) {
+        return querys.getPref(id);
+    }
+
+    public String getTraumas(int id) {
+        return querys.getTraumas(id);
+    }
+
+    public String getInfoTraumas(int id) {
+        return querys.getInfoTraumas(id);
+    }
+
+    //============================================================================================
+    public String getDream(int id) {
+        return querys.getDream(id);
+    }
+
+    public String getAlimenticio(int id) {
+        return querys.getAlimenticio(id);
+    }
+
+    public String getAntPsicologicos(int id) {
+        return querys.getAntPsicologicos(id);
+    }
+    //===========================================================================================
+
+    public String getGrave(int id) {
+        return querys.getGrave(id);
+    }
+
+    public String getAccidentes(int id) {
+        return querys.getAccidentes(id);
+    }
+
+    public String getMedicamento(int id) {
+        return querys.getMedicamento(id);
+    }
+
+    public String getQuirurgica(int id) {
+        return querys.getQuirurgica(id);
+    }
+
+    public String getAuxiliar(int id) {
+        return querys.getAuxiliar(id);
+    }
+
+    //===========================================================================================
+    public String getPsicologia(int id) {
+        return querys.getPsicologia(id);
+    }
+
+    public String getPsiquiatra(int id) {
+        return querys.getPsiquiatra(id);
+    }
+
+    public String getPatologia(int id) {
+        return querys.getPatologia(id);
+    }
+    //=========================================================================================
+
+    public String getLenguaje(int id) {
+        return querys.getLenguaje(id);
+    }
+
+    public String getEmocional(int id) {
+        return querys.getEmocional(id);
+    }
+
+    public String getRealidad(int id) {
+        return querys.getRealidad(id);
+    }
+
+    public String getHigiene(int id) {
+        return querys.getHigiene(id);
+    }
+
+    //===========================================================================================
+    public String getDiagnostico(int id) {
+        return querys.getDiagnostico(id);
+    }
+
+    public String getObservaciones(int id) {
+        return querys.getObservaciones(id);
+    }
+    //==========================================================================================
+
+    public ResultSet getFamiliaress(int id) {
+
+        return querys.getFamiliares(id);
+    }
+    //=========================================================================================
+
+    public void inicio() {
+        pacientesv = new pacientesView(searchPacientes());
+        pacientesv.setMotor(this);
+        this.setPacientesView(pacientesv);
+    }
+
+    public void inicioPrincipal() {
+        principal = new principalView();
+        principal.setMotor(this);
+        this.setPrincipalView(principal);
+        principal.setDatos();
     }
     //===========================================================================================
     private LoginView loginView;

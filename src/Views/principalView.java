@@ -5,17 +5,14 @@
  */
 package Views;
 
+import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
-import java.util.Locale;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 import psipacientes.motor;
 
 /**
@@ -24,18 +21,110 @@ import psipacientes.motor;
  */
 public class principalView extends javax.swing.JFrame {
 
-    
-    
-    public void setMotor(motor m)
-    {
-        this.m=m;
+    public void showTableData(ResultSet rs) {
+        try {
+
+            familiaTable.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+
+        }
+
     }
+
+    public void setDatos() {
+        id = m.getId();
+
+        try {
+            java.util.Date date = new SimpleDateFormat("dd/MM/yyyy").parse(m.getNacimiento(id));
+            dateText.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(principalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        nameText.setText(m.getNombre(id));
+        apellidoText.setText(m.getApellido(id));
+        edadText.setValue(m.getEdad(id));
+        lvlText.setSelectedItem(m.getLvl(id));
+        religionText.setSelectedItem(m.getReligion(id));
+        ocupacionText.setText(m.getOcupacion(id));
+        actText.setText(m.getAct(id));
+        direccionText.setText(m.getDireccion(id));
+        telefonoText.setText(m.getTelefono(id));
+        asuntoText.setText(m.getAsunto(id));
+        objText.setText(m.getObjetivo(id));
+        //===========================
+        evolucionText.setText(m.getEvolucion(id));
+        causasText.setText(m.getCausas(id));
+        accionesText.setText(m.getAcciones(id));
+        implicacionesText.setText(m.getImplicaciones(id));
+        //===========================================
+        socialText.setText(m.getSocial(id));
+        laboralText.setText(m.getLaboral(id));
+        viviendaText.setText(m.getVivienda(id));
+        //===========================================
+        antSexualText.setText(m.getAbuso(id));
+        embarazoEdad.setValue(m.getEdadSexual(id));
+        preferenciaText.setText(m.getPref(id));
+        
+        if (m.getEmbarazo(id).equals("Si")) {
+            siEmbarazo.setSelected(true);
+            
+        } else if (m.getEmbarazo(id).equals("No")) {
+            noEmbarazo.setSelected(true);
+            embarazoEdad.setEnabled(false);
+        } else {
+            siEmbarazo.setSelected(false);
+            noEmbarazo.setSelected(false);
+        }
+        if (m.getTraumas(id).equals("Si")) {
+            siTrauma.setSelected(true);
+
+        } else if (m.getTraumas(id).equals("No")) {
+            noTrauma.setSelected(true);
+            infoTraumaText.setEnabled(false);
+
+        } else {
+            siTrauma.setSelected(false);
+            noTrauma.setSelected(false);
+        }
+        infoTraumaText.setText(m.getInfoTraumas(id));
+        //==========================================
+        dreamText.setText(m.getDream(id));
+        alimentoText.setText(m.getAlimenticio(id));
+        antPsiText.setText(m.getAntPsicologicos(id));
+        //=============================================
+        enfermedadText.setText(m.getGrave(id));
+        accidenteText.setText(m.getAccidentes(id));
+        medicamentoText.setText(m.getMedicamento(id));
+        intervencionText.setText(m.getQuirurgica(id));
+        auxText.setText(m.getAuxiliar(id));
+        //============================================
+        antFamPsiText.setText(m.getPsicologia(id));
+        antFamPsiqText.setText(m.getPsiquiatra(id));
+        antFamPatText.setText(m.getPatologia(id));
+        //==============================================
+        lenguajeText.setText(m.getLenguaje(id));
+        emocionalText.setText(m.getEmocional(id));
+        realidadText.setText(m.getRealidad(id));
+        higieneText.setText(m.getHigiene(id));
+        //==============================================
+        diagnosticoText.setText(m.getDiagnostico(id));
+        observacionText.setText(m.getObservaciones(id));
+        //==============================================
+        showTableData(m.getFamiliaress(id));
+
+    }
+
+    public void setMotor(motor m) {
+        this.m = m;
+    }
+
     /**
      * Creates new form principalView
      */
     public principalView() {
         initComponents();
-     
+
     }
 
     /**
@@ -75,7 +164,6 @@ public class principalView extends javax.swing.JFrame {
         objText = new javax.swing.JTextField();
         volver = new javax.swing.JButton();
         editar = new javax.swing.JButton();
-        actualizar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -91,13 +179,6 @@ public class principalView extends javax.swing.JFrame {
         implicacionesText = new javax.swing.JTextArea();
         VolverProblema = new javax.swing.JButton();
         EditarProblema = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -108,6 +189,8 @@ public class principalView extends javax.swing.JFrame {
         laboralText = new javax.swing.JTextArea();
         jScrollPane8 = new javax.swing.JScrollPane();
         viviendaText = new javax.swing.JTextArea();
+        editarSociales = new javax.swing.JButton();
+        volverSocial = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -125,6 +208,8 @@ public class principalView extends javax.swing.JFrame {
         infoTraumaText = new javax.swing.JTextArea();
         jScrollPane27 = new javax.swing.JScrollPane();
         antSexualText = new javax.swing.JTextArea();
+        editarSexual = new javax.swing.JButton();
+        volverSexual = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -135,6 +220,8 @@ public class principalView extends javax.swing.JFrame {
         alimentoText = new javax.swing.JTextArea();
         jScrollPane12 = new javax.swing.JScrollPane();
         antPsiText = new javax.swing.JTextArea();
+        editarHabitos = new javax.swing.JButton();
+        volverHabito = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
@@ -151,6 +238,8 @@ public class principalView extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jScrollPane17 = new javax.swing.JScrollPane();
         auxText = new javax.swing.JTextArea();
+        editarClinico = new javax.swing.JButton();
+        volverClinico = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
         jScrollPane18 = new javax.swing.JScrollPane();
@@ -161,26 +250,46 @@ public class principalView extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         jScrollPane20 = new javax.swing.JScrollPane();
         antFamPatText = new javax.swing.JTextArea();
+        editarAntFam = new javax.swing.JButton();
+        VolverAntFam = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jScrollPane21 = new javax.swing.JScrollPane();
         lenguajeText = new javax.swing.JTextArea();
         jLabel38 = new javax.swing.JLabel();
         jScrollPane22 = new javax.swing.JScrollPane();
-        jTextArea21 = new javax.swing.JTextArea();
+        emocionalText = new javax.swing.JTextArea();
         jLabel39 = new javax.swing.JLabel();
         jScrollPane23 = new javax.swing.JScrollPane();
-        jTextArea22 = new javax.swing.JTextArea();
+        realidadText = new javax.swing.JTextArea();
         jLabel40 = new javax.swing.JLabel();
         jScrollPane24 = new javax.swing.JScrollPane();
-        jTextArea23 = new javax.swing.JTextArea();
+        higieneText = new javax.swing.JTextArea();
+        editarMental = new javax.swing.JButton();
+        volverMental = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
         jScrollPane25 = new javax.swing.JScrollPane();
-        jTextArea24 = new javax.swing.JTextArea();
+        diagnosticoText = new javax.swing.JTextArea();
         jLabel42 = new javax.swing.JLabel();
         jScrollPane26 = new javax.swing.JScrollPane();
-        jTextArea25 = new javax.swing.JTextArea();
+        observacionText = new javax.swing.JTextArea();
+        editarReporte = new javax.swing.JButton();
+        volverReporte = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        familiaTable = new javax.swing.JTable();
+        volverFam = new javax.swing.JButton();
+        ingresar = new javax.swing.JButton();
+        borrar = new javax.swing.JButton();
+        jLabel43 = new javax.swing.JLabel();
+        famNombre = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        famParentesco = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        famOcupacion = new javax.swing.JTextField();
+        famEdad = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,49 +337,37 @@ public class principalView extends javax.swing.JFrame {
             }
         });
 
-        actualizar.setText("Actualizar Datos");
-        actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lvlText, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(religionText, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(edadText, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nameText)
-                                .addComponent(apellidoText, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(volver)))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lvlText, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(religionText, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(edadText, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(nameText)
+                        .addComponent(apellidoText, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)))
                 .addGap(97, 97, 97)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(editar)
-                        .addGap(211, 211, 211)
-                        .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 829, Short.MAX_VALUE)
+                        .addComponent(volver))
                     .addComponent(jLabel10)
                     .addComponent(jLabel9)
                     .addComponent(jLabel8)
@@ -284,7 +381,7 @@ public class principalView extends javax.swing.JFrame {
                         .addComponent(asuntoText, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(objText, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(455, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,12 +436,15 @@ public class principalView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(religionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(objText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(volver)
-                    .addComponent(editar)
-                    .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(editar)
+                        .addContainerGap(175, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(volver)
+                        .addContainerGap())))
         );
 
         jTabbedPane1.addTab("Informacion General", jPanel1);
@@ -374,8 +474,18 @@ public class principalView extends javax.swing.JFrame {
         jScrollPane4.setViewportView(implicacionesText);
 
         VolverProblema.setText("Volver");
+        VolverProblema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverProblemaActionPerformed(evt);
+            }
+        });
 
         EditarProblema.setText("Editar Datos");
+        EditarProblema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarProblemaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -383,21 +493,23 @@ public class principalView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel16)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(573, Short.MAX_VALUE)
-                .addComponent(EditarProblema)
-                .addGap(543, 543, 543)
-                .addComponent(VolverProblema)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(VolverProblema))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel15)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel16)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
+                                .addComponent(jScrollPane3)
+                                .addComponent(jScrollPane2)
+                                .addComponent(jScrollPane4))
+                            .addComponent(EditarProblema))
+                        .addGap(0, 712, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -419,66 +531,14 @@ public class principalView extends javax.swing.JFrame {
                 .addComponent(jLabel16)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VolverProblema)
-                    .addComponent(EditarProblema))
+                .addGap(18, 18, 18)
+                .addComponent(EditarProblema)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(VolverProblema)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Definicion del problema", jPanel2);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane5.setViewportView(jTable1);
-
-        jButton3.setText("jButton3");
-
-        jButton4.setText("jButton4");
-
-        jButton5.setText("jButton5");
-
-        jButton6.setText("jButton6");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Estructura y funcionalidad familiar", jPanel3);
 
         jLabel17.setText("Entorno Social");
 
@@ -498,6 +558,20 @@ public class principalView extends javax.swing.JFrame {
         viviendaText.setRows(5);
         jScrollPane8.setViewportView(viviendaText);
 
+        editarSociales.setText("Guardar Datos");
+        editarSociales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarSocialesActionPerformed(evt);
+            }
+        });
+
+        volverSocial.setText("Volver");
+        volverSocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverSocialActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -505,6 +579,7 @@ public class principalView extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(editarSociales)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -512,6 +587,10 @@ public class principalView extends javax.swing.JFrame {
                     .addComponent(jLabel17)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(1034, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volverSocial)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,7 +607,11 @@ public class principalView extends javax.swing.JFrame {
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(editarSociales)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                .addComponent(volverSocial)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Exploracion de redes sociales", jPanel4);
@@ -551,6 +634,11 @@ public class principalView extends javax.swing.JFrame {
         });
 
         noEmbarazo.setText("No");
+        noEmbarazo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noEmbarazoActionPerformed(evt);
+            }
+        });
 
         siTrauma.setText("Si");
         siTrauma.addActionListener(new java.awt.event.ActionListener() {
@@ -576,6 +664,20 @@ public class principalView extends javax.swing.JFrame {
         antSexualText.setRows(5);
         jScrollPane27.setViewportView(antSexualText);
 
+        editarSexual.setText("Guardar Datos");
+        editarSexual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarSexualActionPerformed(evt);
+            }
+        });
+
+        volverSexual.setText("Volver");
+        volverSexual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverSexualActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -583,22 +685,30 @@ public class principalView extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel24)
-                    .addComponent(siEmbarazo)
-                    .addComponent(noEmbarazo)
-                    .addComponent(noTrauma)
-                    .addComponent(siTrauma)
-                    .addComponent(jLabel26)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20)
-                    .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(preferenciaText, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(embarazoEdad, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(832, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(editarSexual)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(volverSexual))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel24)
+                            .addComponent(siEmbarazo)
+                            .addComponent(noEmbarazo)
+                            .addComponent(noTrauma)
+                            .addComponent(siTrauma)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel20)
+                            .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(preferenciaText, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(embarazoEdad, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 826, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -606,14 +716,14 @@ public class principalView extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(siEmbarazo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(noEmbarazo)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel22)
                 .addGap(18, 18, 18)
                 .addComponent(embarazoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -621,17 +731,22 @@ public class principalView extends javax.swing.JFrame {
                 .addComponent(jLabel23)
                 .addGap(18, 18, 18)
                 .addComponent(preferenciaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel24)
                 .addGap(18, 18, 18)
-                .addComponent(siTrauma)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(noTrauma)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel26)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(siTrauma)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(noTrauma)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel26)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(editarSexual)
+                        .addComponent(volverSexual)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Historia sexual", jPanel5);
@@ -654,6 +769,15 @@ public class principalView extends javax.swing.JFrame {
         antPsiText.setRows(5);
         jScrollPane12.setViewportView(antPsiText);
 
+        editarHabitos.setText("Guardar Datos");
+
+        volverHabito.setText("Volver");
+        volverHabito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverHabitoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -661,6 +785,7 @@ public class principalView extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(editarHabitos)
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -668,6 +793,10 @@ public class principalView extends javax.swing.JFrame {
                     .addComponent(jLabel27)
                     .addComponent(jLabel25))
                 .addContainerGap(1047, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volverHabito)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -684,7 +813,11 @@ public class principalView extends javax.swing.JFrame {
                 .addComponent(jLabel28)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(editarHabitos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addComponent(volverHabito)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Habitos", jPanel6);
@@ -719,6 +852,15 @@ public class principalView extends javax.swing.JFrame {
         auxText.setRows(5);
         jScrollPane17.setViewportView(auxText);
 
+        editarClinico.setText("Guardar Datos");
+
+        volverClinico.setText("Volver");
+        volverClinico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverClinicoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -739,8 +881,13 @@ public class principalView extends javax.swing.JFrame {
                         .addGap(176, 176, 176)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33))))
+                            .addComponent(jLabel33)))
+                    .addComponent(editarClinico))
                 .addContainerGap(659, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volverClinico)
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,7 +915,11 @@ public class principalView extends javax.swing.JFrame {
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(editarClinico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(volverClinico)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Antecedentes clinicos", jPanel7);
@@ -791,6 +942,15 @@ public class principalView extends javax.swing.JFrame {
         antFamPatText.setRows(5);
         jScrollPane20.setViewportView(antFamPatText);
 
+        editarAntFam.setText("Guardar  Datos");
+
+        VolverAntFam.setText("Volver");
+        VolverAntFam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverAntFamActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -798,6 +958,7 @@ public class principalView extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(editarAntFam)
                     .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel36)
                     .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -805,6 +966,10 @@ public class principalView extends javax.swing.JFrame {
                     .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34))
                 .addContainerGap(1047, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(VolverAntFam)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -821,7 +986,11 @@ public class principalView extends javax.swing.JFrame {
                 .addComponent(jLabel36)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(editarAntFam)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addComponent(VolverAntFam)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Antecedentes familiares", jPanel8);
@@ -834,21 +1003,30 @@ public class principalView extends javax.swing.JFrame {
 
         jLabel38.setText("ESTADO EMOCIONAL");
 
-        jTextArea21.setColumns(20);
-        jTextArea21.setRows(5);
-        jScrollPane22.setViewportView(jTextArea21);
+        emocionalText.setColumns(20);
+        emocionalText.setRows(5);
+        jScrollPane22.setViewportView(emocionalText);
 
         jLabel39.setText("CONTACTO CON LA REALIDAD");
 
-        jTextArea22.setColumns(20);
-        jTextArea22.setRows(5);
-        jScrollPane23.setViewportView(jTextArea22);
+        realidadText.setColumns(20);
+        realidadText.setRows(5);
+        jScrollPane23.setViewportView(realidadText);
 
         jLabel40.setText("HIGIENE Y APARIENCIA PERSONAL");
 
-        jTextArea23.setColumns(20);
-        jTextArea23.setRows(5);
-        jScrollPane24.setViewportView(jTextArea23);
+        higieneText.setColumns(20);
+        higieneText.setRows(5);
+        jScrollPane24.setViewportView(higieneText);
+
+        editarMental.setText("Guardar Datos");
+
+        volverMental.setText("Volver");
+        volverMental.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverMentalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -864,8 +1042,13 @@ public class principalView extends javax.swing.JFrame {
                     .addComponent(jLabel39)
                     .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel40)
-                    .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editarMental))
                 .addContainerGap(1058, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volverMental)
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -886,22 +1069,35 @@ public class principalView extends javax.swing.JFrame {
                 .addComponent(jLabel40)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(editarMental)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(volverMental)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Analisis del estado mental", jPanel9);
 
         jLabel41.setText("IMPRESIÓN DIAGNÓSTICA");
 
-        jTextArea24.setColumns(20);
-        jTextArea24.setRows(5);
-        jScrollPane25.setViewportView(jTextArea24);
+        diagnosticoText.setColumns(20);
+        diagnosticoText.setRows(5);
+        jScrollPane25.setViewportView(diagnosticoText);
 
         jLabel42.setText("OBSERVACIONES GENERALES");
 
-        jTextArea25.setColumns(20);
-        jTextArea25.setRows(5);
-        jScrollPane26.setViewportView(jTextArea25);
+        observacionText.setColumns(20);
+        observacionText.setRows(5);
+        jScrollPane26.setViewportView(observacionText);
+
+        editarReporte.setText("Guardar Datos");
+
+        volverReporte.setText("Volver");
+        volverReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverReporteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -913,8 +1109,13 @@ public class principalView extends javax.swing.JFrame {
                     .addComponent(jLabel41)
                     .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel42)
-                    .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editarReporte))
                 .addContainerGap(1058, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volverReporte)
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -927,10 +1128,104 @@ public class principalView extends javax.swing.JFrame {
                 .addComponent(jLabel42)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(editarReporte)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                .addComponent(volverReporte)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Reporte de sesion", jPanel10);
+
+        familiaTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(familiaTable);
+
+        volverFam.setText("Volver");
+        volverFam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverFamActionPerformed(evt);
+            }
+        });
+
+        ingresar.setText("Ingresar Datos");
+
+        borrar.setText("Borrar Datos");
+
+        jLabel43.setText("Nombre");
+
+        jLabel44.setText("Parentesco");
+
+        jLabel45.setText("Edad");
+
+        jLabel46.setText("Ocupacion");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(borrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
+                        .addComponent(volverFam))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel43)
+                                .addComponent(jLabel44)
+                                .addComponent(jLabel45)
+                                .addComponent(jLabel46)
+                                .addComponent(famEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(famNombre)
+                                .addComponent(famParentesco)
+                                .addComponent(famOcupacion, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                            .addComponent(ingresar))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel43)
+                .addGap(18, 18, 18)
+                .addComponent(famNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel44)
+                .addGap(18, 18, 18)
+                .addComponent(famParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(famEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel46)
+                .addGap(18, 18, 18)
+                .addComponent(famOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(ingresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(volverFam)
+                    .addComponent(borrar))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Estructura y funcionalidad familiar", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -954,53 +1249,133 @@ public class principalView extends javax.swing.JFrame {
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         // TODO add your handling code here:
-           
-    }//GEN-LAST:event_editarActionPerformed
-
-    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        // TODO add your handling code here:
-        id=m.getId();
-      
-        try { 
-            java.util.Date date = new SimpleDateFormat("dd/MM/yyyy").parse(m.getNacimiento(id));
-            dateText.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(principalView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        nameText.setText(m.getNombre(id));
-        apellidoText.setText(m.getApellido(id));
-        edadText.setValue(m.getEdad(id));
-        lvlText.setSelectedItem(m.getLvl(id));
-        religionText.setSelectedItem(m.getReligion(id));
-        ocupacionText.setText(m.getOcupacion(id));
-        actText.setText(m.getAct(id));
-        direccionText.setText(m.getDireccion(id));
-        telefonoText.setText(m.getTelefono(id));
-        asuntoText.setText(m.getAsunto(id));
-        objText.setText(m.getObjetivo(id));
-        //===========================
-        evolucionText.setText(m.getEvolucion(id));
-        causasText.setText(m.getCausas(id));
-        accionesText.setText(m.getAcciones(id));
-        implicacionesText.setText(m.getImplicaciones(id));
-        //===========================================
-        socialText.setText(m.getSocial(id));
-        laboralText.setText(m.getLaboral(id));
-        viviendaText.setText(m.getVivienda(id));
+  if (dateText.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "FECHA INVALIDA");
+  }else{
+      String d = Integer.toString(dateText.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mes = Integer.toString(dateText.getCalendar().get(Calendar.MONTH) + 1);
+            String y = Integer.toString(dateText.getCalendar().get(Calendar.YEAR));
+            m.updatePaciente(id, nameText.getText(), apellidoText.getText(), (int) edadText.getValue(), m.getFecha(d, mes, y),
+                    lvlText.getSelectedItem().toString(), religionText.getSelectedItem().toString(), ocupacionText.getText(), actText.getText(), direccionText.getText(), telefonoText.getText(),
+                    asuntoText.getText(), objText.getText());
+  }
        
-    }//GEN-LAST:event_actualizarActionPerformed
+    }//GEN-LAST:event_editarActionPerformed
 
     private void siEmbarazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siEmbarazoActionPerformed
         // TODO add your handling code here:
+       embarazoEdad.setEnabled(true);
+            noEmbarazo.setSelected(false);
     }//GEN-LAST:event_siEmbarazoActionPerformed
 
     private void siTraumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siTraumaActionPerformed
         // TODO add your handling code here:
+        infoTraumaText.setEnabled(true);
+        noTrauma.setSelected(false);
     }//GEN-LAST:event_siTraumaActionPerformed
 
     private void noTraumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTraumaActionPerformed
         // TODO add your handling code here:
+        infoTraumaText.setEnabled(false);
+        siTrauma.setSelected(false);
     }//GEN-LAST:event_noTraumaActionPerformed
+
+    private void VolverProblemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverProblemaActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_VolverProblemaActionPerformed
+
+    private void volverSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverSocialActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_volverSocialActionPerformed
+
+    private void volverSexualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverSexualActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_volverSexualActionPerformed
+
+    private void volverHabitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverHabitoActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_volverHabitoActionPerformed
+
+    private void volverClinicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverClinicoActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_volverClinicoActionPerformed
+
+    private void VolverAntFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverAntFamActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_VolverAntFamActionPerformed
+
+    private void volverMentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverMentalActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_volverMentalActionPerformed
+
+    private void volverReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverReporteActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_volverReporteActionPerformed
+
+    private void volverFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverFamActionPerformed
+        // TODO add your handling code here:
+         m.openPacientes();
+        m.closePrincipal();
+    }//GEN-LAST:event_volverFamActionPerformed
+
+    private void EditarProblemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarProblemaActionPerformed
+        // TODO add your handling code here:
+        m.updateProblema(id, evolucionText.getText(), causasText.getText(), accionesText.getText(), implicacionesText.getText());
+        
+    }//GEN-LAST:event_EditarProblemaActionPerformed
+
+    private void editarSocialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarSocialesActionPerformed
+        // TODO add your handling code here:
+        m.updateSociales(id, socialText.getText(), laboralText.getText(), viviendaText.getText());
+    }//GEN-LAST:event_editarSocialesActionPerformed
+
+    private void noEmbarazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noEmbarazoActionPerformed
+        // TODO add your handling code here:
+        embarazoEdad.setEnabled(false);
+        siEmbarazo.setSelected(false);
+    }//GEN-LAST:event_noEmbarazoActionPerformed
+
+    private void editarSexualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarSexualActionPerformed
+        // TODO add your handling code here:
+        String embarazo="";
+        String traumas="";
+        if (siEmbarazo.isSelected()) {
+            embarazo = "Si";
+            if (siTrauma.isSelected()) {
+                traumas = "Si";
+                m.updateSexual(id, antSexualText.getText(), embarazo, (int) embarazoEdad.getValue(), preferenciaText.getText(), traumas, infoTraumaText.getText());
+            } else {
+                traumas = "No";
+                 m.updateSexual(id, antSexualText.getText(), embarazo, (int) embarazoEdad.getValue(), preferenciaText.getText(), traumas, "");
+            }
+        } else {
+            embarazo = "No";
+            if (siTrauma.isSelected()) {
+                traumas = "Si";
+                 m.updateSexual(id, antSexualText.getText(), embarazo, 0, preferenciaText.getText(), traumas, infoTraumaText.getText());
+            } else {
+                traumas = "No";
+                 m.updateSexual(id, antSexualText.getText(), embarazo, 0, preferenciaText.getText(), traumas, "");
+            }
+        }
+        
+    }//GEN-LAST:event_editarSexualActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1039,11 +1414,11 @@ public class principalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarProblema;
+    private javax.swing.JButton VolverAntFam;
     private javax.swing.JButton VolverProblema;
     private javax.swing.JTextArea accidenteText;
     private javax.swing.JTextArea accionesText;
     private javax.swing.JTextField actText;
-    private javax.swing.JButton actualizar;
     private javax.swing.JTextArea alimentoText;
     private javax.swing.JTextArea antFamPatText;
     private javax.swing.JTextArea antFamPsiText;
@@ -1053,22 +1428,35 @@ public class principalView extends javax.swing.JFrame {
     private javax.swing.JTextField apellidoText;
     private javax.swing.JTextField asuntoText;
     private javax.swing.JTextArea auxText;
+    private javax.swing.JButton borrar;
     private javax.swing.JTextArea causasText;
     private com.toedter.calendar.JDateChooser dateText;
+    private javax.swing.JTextArea diagnosticoText;
     private javax.swing.JTextField direccionText;
     private javax.swing.JTextArea dreamText;
     private javax.swing.JSpinner edadText;
     private javax.swing.JButton editar;
+    private javax.swing.JButton editarAntFam;
+    private javax.swing.JButton editarClinico;
+    private javax.swing.JButton editarHabitos;
+    private javax.swing.JButton editarMental;
+    private javax.swing.JButton editarReporte;
+    private javax.swing.JButton editarSexual;
+    private javax.swing.JButton editarSociales;
     private javax.swing.JSpinner embarazoEdad;
+    private javax.swing.JTextArea emocionalText;
     private javax.swing.JTextArea enfermedadText;
     private javax.swing.JTextArea evolucionText;
+    private javax.swing.JSpinner famEdad;
+    private javax.swing.JTextField famNombre;
+    private javax.swing.JTextField famOcupacion;
+    private javax.swing.JTextField famParentesco;
+    private javax.swing.JTable familiaTable;
+    private javax.swing.JTextArea higieneText;
     private javax.swing.JTextArea implicacionesText;
     private javax.swing.JTextArea infoTraumaText;
+    private javax.swing.JButton ingresar;
     private javax.swing.JTextArea intervencionText;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1106,6 +1494,10 @@ public class principalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1149,12 +1541,6 @@ public class principalView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea21;
-    private javax.swing.JTextArea jTextArea22;
-    private javax.swing.JTextArea jTextArea23;
-    private javax.swing.JTextArea jTextArea24;
-    private javax.swing.JTextArea jTextArea25;
     private javax.swing.JTextArea laboralText;
     private javax.swing.JTextArea lenguajeText;
     private javax.swing.JComboBox<String> lvlText;
@@ -1163,8 +1549,10 @@ public class principalView extends javax.swing.JFrame {
     private javax.swing.JRadioButton noEmbarazo;
     private javax.swing.JRadioButton noTrauma;
     private javax.swing.JTextField objText;
+    private javax.swing.JTextArea observacionText;
     private javax.swing.JTextField ocupacionText;
     private javax.swing.JTextField preferenciaText;
+    private javax.swing.JTextArea realidadText;
     private javax.swing.JComboBox<String> religionText;
     private javax.swing.JRadioButton siEmbarazo;
     private javax.swing.JRadioButton siTrauma;
@@ -1172,7 +1560,14 @@ public class principalView extends javax.swing.JFrame {
     private javax.swing.JTextField telefonoText;
     private javax.swing.JTextArea viviendaText;
     private javax.swing.JButton volver;
+    private javax.swing.JButton volverClinico;
+    private javax.swing.JButton volverFam;
+    private javax.swing.JButton volverHabito;
+    private javax.swing.JButton volverMental;
+    private javax.swing.JButton volverReporte;
+    private javax.swing.JButton volverSexual;
+    private javax.swing.JButton volverSocial;
     // End of variables declaration//GEN-END:variables
 private motor m;
-private int id;
+    private int id;
 }
