@@ -820,6 +820,7 @@ public boolean insertFamiliar(int id,String nombre,String apellido, String paren
         }
         return objetivo;
     }
+  
 
     //==================================================================
     public String getEvolucion(int id) {
@@ -1341,7 +1342,7 @@ public boolean insertFamiliar(int id,String nombre,String apellido, String paren
     //===========================================================================================
     public ResultSet getFamiliares(int id) {
         try {
-            String sql = "SELECT id,nombre,parentesco,edad,ocupacion FROM funcfamiliar WHERE clienteID=?";
+            String sql = "SELECT id AS ID,nombre AS NOMBRE,parentesco AS PARENTESCO,edad AS EDAD,ocupacion AS OCUPACION FROM funcfamiliar WHERE clienteID=?";
             pst = con.prepareStatement(sql);
             pst.setInt(1, id);
             rs = pst.executeQuery();
@@ -1356,7 +1357,7 @@ public boolean insertFamiliar(int id,String nombre,String apellido, String paren
     //===========================================================================================
     public ResultSet searchPacientes() {
         try {
-            String sql = "SELECT id,nombre,apellido,edad,asunto FROM cliente";
+            String sql = "SELECT id AS ID,nombre AS NOMBRE,apellido AS APELLIDO,edad AS EDAD,asunto AS ASUNTO FROM cliente";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -1369,7 +1370,7 @@ public boolean insertFamiliar(int id,String nombre,String apellido, String paren
 
     public ResultSet searchPacientesNombre(String nombre) {
         try {
-            String sql = "SELECT id,nombre,apellido,edad,asunto FROM cliente WHERE nombre LIKE '%" + nombre + "%'";
+            String sql = "SELECT id AS ID,nombre AS NOMBRE,apellido AS APELLIDO,edad AS EDAD,asunto AS ASUNTO FROM cliente WHERE nombre LIKE '%" + nombre + "%'";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -1382,7 +1383,7 @@ public boolean insertFamiliar(int id,String nombre,String apellido, String paren
 
     public ResultSet searchPacientesApellido(String apellido) {
         try {
-            String sql = "SELECT id,nombre,apellido,edad,asunto FROM cliente WHERE apellido LIKE '%" + apellido + "%'";
+            String sql = "SELECT id AS ID,nombre AS NOMBRE,apellido AS APELLIDO,edad AS EDAD,asunto AS ASUNTO FROM cliente WHERE apellido LIKE '%" + apellido + "%'";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -1398,7 +1399,7 @@ public boolean insertFamiliar(int id,String nombre,String apellido, String paren
             JOptionPane.showMessageDialog(null, "DATO INVALIDO");
         } else {
             try {
-                String sql = "SELECT id,nombre,apellido,edad,asunto FROM cliente WHERE edad LIKE '%" + edad + "%'";
+                String sql = "SELECT id AS ID,nombre AS NOMBRE,apellido AS APELLIDO,edad AS EDAD,asunto AS ASUNTO FROM cliente WHERE edad LIKE '%" + edad + "%'";
                 pst = con.prepareStatement(sql);
                 rs = pst.executeQuery();
 

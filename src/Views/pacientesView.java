@@ -5,6 +5,7 @@
  */
 package Views;
 
+import java.io.File;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
@@ -302,7 +303,7 @@ public class pacientesView extends javax.swing.JFrame {
          if (saveId == 0) {
             JOptionPane.showMessageDialog(null, "FAVOR DE SELECCIONAR UN PACIENTE!.");}else
          {
-               m.createPDF(saveId);
+               m.createPDF(saveId, new File("test.pdf"));
          }
       
     }//GEN-LAST:event_jButton1ActionPerformed

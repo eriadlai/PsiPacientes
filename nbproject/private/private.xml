@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-betav1/src/Views/principalView.java</file>
-            <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-betav1/src/Views/addPacienteView.java</file>
             <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-betav1/src/BD/querysDB.java</file>
             <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-betav1/src/PDF/GeneratePDF.java</file>
-            <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-betav1/src/psipacientes/main.java</file>
+            <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-betav1/src/Views/pacientesView.java</file>
             <file>file:/C:/Users/Adlai/Documents/NetBeansProjects/PsiPacientes-betav1/src/psipacientes/motor.java</file>
         </group>
     </open-files>

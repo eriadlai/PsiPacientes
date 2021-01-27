@@ -12,6 +12,7 @@ import Views.addPacienteView;
 import Views.menuView;
 import Views.pacientesView;
 import Views.principalView;
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 
@@ -25,9 +26,9 @@ public class motor {
 
     }
 //=====================================================
-    public void createPDF(int id)
+    public void createPDF(int id, File pdfNewFile)
     {
-      pdf.createPDF(id);
+      pdf.createPDF(id,pdfNewFile);
     }
     public void setPDF(GeneratePDF pdf)
     {
