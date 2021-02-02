@@ -90,7 +90,7 @@ public class querysDB {
 
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         
-        if (nombre.equals("") || apellido.equals("") || edad < 0 || nacimiento.equals("") || escolaridad.equals("")
+        if (nombre.equals("") || apellido.equals("") || edad <= 0 || nacimiento.equals("") || escolaridad.equals("")
                 || religion.equals("") || ocupacion.equals("") || actExtra.equals("") || direccion.equals("") || telefono.equals("")
                 || servicio.equals("") || asunto.equals("")) {
             JOptionPane.showMessageDialog(null, "NO DEJAR NINGUN CAMPO VACIO!");

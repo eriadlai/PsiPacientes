@@ -34,55 +34,68 @@ public class menuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         addPaciente = new javax.swing.JButton();
         verPacientes = new javax.swing.JButton();
         backLogin = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
+        jPanel3.setBackground(new java.awt.Color(161, 130, 63));
+        jPanel3.setLayout(null);
+
+        addPaciente.setBackground(new java.awt.Color(193, 145, 42));
         addPaciente.setText("Agregar Paciente");
+        addPaciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addPacienteActionPerformed(evt);
             }
         });
+        jPanel3.add(addPaciente);
+        addPaciente.setBounds(40, 180, 150, 32);
 
+        verPacientes.setBackground(new java.awt.Color(193, 145, 42));
         verPacientes.setText("Ver Pacientes");
+        verPacientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verPacientesActionPerformed(evt);
             }
         });
+        jPanel3.add(verPacientes);
+        verPacientes.setBounds(230, 180, 129, 32);
 
+        backLogin.setBackground(new java.awt.Color(193, 145, 42));
         backLogin.setText("Salir");
+        backLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backLoginActionPerformed(evt);
             }
         });
+        jPanel3.add(backLogin);
+        backLogin.setBounds(430, 180, 129, 32);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\eri_a\\Desktop\\Logo.png")); // NOI18N
+        jPanel3.add(jLabel2);
+        jLabel2.setBounds(0, 0, 590, 330);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(verPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(backLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(addPaciente)
-                .addGap(30, 30, 30)
-                .addComponent(verPacientes)
-                .addGap(34, 34, 34)
-                .addComponent(backLogin)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,6 +159,8 @@ public class menuView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPaciente;
     private javax.swing.JButton backLogin;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton verPacientes;
     // End of variables declaration//GEN-END:variables
 private motor m;

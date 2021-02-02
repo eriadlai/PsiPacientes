@@ -38,74 +38,79 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        userText = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        userText = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
         passText = new javax.swing.JPasswordField();
-        sUser = new javax.swing.JLabel();
-        sPass = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
+        jPanel2.setBackground(new java.awt.Color(161, 130, 63));
+        jPanel2.setLayout(null);
+
+        jLabel1.setForeground(new java.awt.Color(2, 2, 2));
+        jLabel1.setText("Usuario");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(320, 120, 50, 23);
+
+        userText.setBackground(new java.awt.Color(0, 0, 0));
+        userText.setForeground(new java.awt.Color(255, 255, 255));
         userText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userTextActionPerformed(evt);
             }
         });
+        jPanel2.add(userText);
+        userText.setBounds(210, 160, 270, 24);
 
-        jLabel1.setText("Usuario");
-
+        jLabel2.setForeground(new java.awt.Color(2, 2, 2));
         jLabel2.setText("Contraseña");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(310, 200, 80, 24);
 
+        passText.setBackground(new java.awt.Color(0, 0, 0));
+        passText.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(passText);
+        passText.setBounds(210, 250, 270, 22);
+
+        btnLogin.setBackground(new java.awt.Color(193, 145, 42));
+        btnLogin.setForeground(new java.awt.Color(0, 0, 0));
         btnLogin.setText("Ingresar");
+        btnLogin.setBorder(null);
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLoginMouseEntered(evt);
+            }
+        });
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
+        jPanel2.add(btnLogin);
+        btnLogin.setBounds(240, 300, 210, 40);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\eri_a\\Desktop\\LogoCompleto.png")); // NOI18N
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(0, 0, 720, 380);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(542, 542, 542)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sPass)
-                            .addComponent(sUser)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(btnLogin)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnLogin)
-                .addGap(60, 60, 60)
-                .addComponent(sUser)
-                .addGap(56, 56, 56)
-                .addComponent(sPass)
-                .addContainerGap(34, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
         );
 
         pack();
@@ -117,13 +122,18 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-     
+         
         m.logeo(userText.getText(), passText.getText());
         userText.setText("");
         passText.setText("");
       
       
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnLoginMouseEntered
 
     /**
      * @param args the command line arguments
@@ -164,9 +174,9 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField passText;
-    private javax.swing.JLabel sPass;
-    private javax.swing.JLabel sUser;
     private javax.swing.JTextField userText;
     // End of variables declaration//GEN-END:variables
 private motor m;
