@@ -6,6 +6,7 @@
 package Views;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -29,9 +30,8 @@ public class LoginView extends javax.swing.JFrame {
      */
     public LoginView() {
         initComponents();
-        
-        System.out.println(getClass().getClassLoader().getResource("resources/imagenes/CEPAC_Logo.png"));
-        ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("resources/imagenes/CEPAC_Logo.png"));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("CEPAC_Logo.png")));
+       
         
       
         pack();
@@ -107,7 +107,7 @@ public class LoginView extends javax.swing.JFrame {
         jPanel2.add(btnLogin);
         btnLogin.setBounds(240, 300, 210, 40);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/LogoCompleto.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Adlai\\Documents\\NetBeansProjects\\PsiPacientes-betav5\\src\\resources\\imagenes\\LogoCompleto.png")); // NOI18N
         jPanel2.add(jLabel4);
         jLabel4.setBounds(0, 0, 720, 380);
 

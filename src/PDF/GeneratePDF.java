@@ -69,7 +69,7 @@ public class GeneratePDF {
                 writer.setBoxSize("art", rct);
                 document.open();
                 //==============================================
-                Image imagen = Image.getInstance("headImage.png");
+                Image imagen = Image.getInstance(getClass().getResource("headImage.png"));
                 imagen.scalePercent(60f);//esto es opcional para definir el tamaño de la imagen.
                 imagen.setAlignment(Element.ALIGN_CENTER);
                 document.add(imagen);
@@ -214,7 +214,7 @@ public class GeneratePDF {
                 table.addCell("OCUPACION");
 //Añadir dos filas de celdas sin formato
                 ResultSet rs = m.getFamiliaress(id);
-                if (rs.next()) {
+               
                     while (rs.next()) {
                         table.addCell(rs.getString("nombre"));
                         table.addCell(rs.getString("apellido"));
@@ -223,7 +223,6 @@ public class GeneratePDF {
                         table.addCell(rs.getString("ocupacion"));
                     }
 
-                }
                 document.add(table);
                 document.add(chunkSeparador);
 //FIN Ejemplos de TABLE
@@ -436,10 +435,10 @@ public class GeneratePDF {
                 JOptionPane.showMessageDialog(null, "ERROR AL GENERAR EL ARCHIVO PDF! ERROR: " + ex);
             }
 
-            System.out.println("Your PDF file has been generated!(Â¡Se ha generado tu hoja PDF!");
-            JOptionPane.showMessageDialog(null, "ARCHIVO PDF GENERADO CON EXITO EN:" + RESULT);
+            System.out.println("Se ha generado tu hoja PDF!");
+            JOptionPane.showMessageDialog(null, "ARCHIVO PDF "+ RESULT+"  GENERADO CON EXITO" );
         } catch (DocumentException documentException) {
-            System.out.println("The file not exists (Se ha producido un error al generar un documento): " + documentException);
+            System.out.println("Se ha producido un error al generar un documento: " + documentException);
             JOptionPane.showMessageDialog(null, "ERROR AL GENERAR EL ARCHIVO PDF! ERROR: " + documentException);
         }
     }

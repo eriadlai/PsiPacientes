@@ -6,6 +6,7 @@
 package Views;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -29,7 +30,7 @@ public class menuView extends javax.swing.JFrame {
      */
     public menuView() {
         initComponents();
-  ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("resources/imagenes/CEPAC_Logo.png"));
+  setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("CEPAC_Logo.png")));
     }
 
     /**
@@ -87,7 +88,7 @@ public class menuView extends javax.swing.JFrame {
         jPanel3.add(backLogin);
         backLogin.setBounds(20, 280, 150, 32);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/Logo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Adlai\\Documents\\NetBeansProjects\\PsiPacientes-betav5\\src\\resources\\imagenes\\Logo.png")); // NOI18N
         jPanel3.add(jLabel2);
         jLabel2.setBounds(0, 0, 590, 330);
 

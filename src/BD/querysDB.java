@@ -126,7 +126,7 @@ public class querysDB {
                     pst.setString(14, date);
                     pst.executeUpdate();
                     setDatosPaciente(buscarId(nombre, apellido));
-                    JOptionPane.showMessageDialog(null, "inserted successfully");
+                    JOptionPane.showMessageDialog(null, "PACIENTE REGISTRADO CON EXITO!");
                     return true;
                 }
 
@@ -167,7 +167,7 @@ public class querysDB {
                     pst.setInt(5, edad);
                     pst.setString(6, ocupacion);
                     pst.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "inserted successfully");
+                    JOptionPane.showMessageDialog(null, "DATOS DEL FAMILIAR INGRESADOS CON EXITO!");
 
                     return true;
                 }
@@ -353,7 +353,7 @@ public class querysDB {
     public void deleteFamiliar(int id) {
         String nombre = getNombreFamiliar(id);
         String apellido = getApellidoFamiliar(id);
-        int reply = JOptionPane.showConfirmDialog(null, "SEGURO DE ELIMINAR LOS DATOS DEL PACIENTE: " + "" + nombre + " " + apellido, "Confirmacion", JOptionPane.YES_NO_OPTION);
+        int reply = JOptionPane.showConfirmDialog(null, "SEGURO DE ELIMINAR LOS DATOS DEL FAMILIAR: " + "" + nombre + " " + apellido, "Confirmacion", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
             try {
 
@@ -426,7 +426,7 @@ public class querysDB {
             pst.setString(4, implicaciones);
             pst.setInt(5, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "updated successfully");
+            JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CON EXITO!");
 
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -442,7 +442,7 @@ public class querysDB {
             pst.setString(3, vivienda);
             pst.setInt(4, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "updated successfully");
+             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CON EXITO!");
 
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -461,7 +461,7 @@ public class querysDB {
             pst.setString(6, infoTraumas);
             pst.setInt(7, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "updated successfully");
+           JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CON EXITO!");
 
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -477,7 +477,7 @@ public class querysDB {
             pst.setString(3, psicologicos);
             pst.setInt(4, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "updated successfully");
+             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CON EXITO!");
 
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -495,7 +495,7 @@ public class querysDB {
             pst.setString(5, auxiliar);
             pst.setInt(6, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "updated successfully");
+          JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CON EXITO!");
 
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -511,7 +511,7 @@ public class querysDB {
             pst.setString(3, patologia);
             pst.setInt(4, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "updated successfully");
+          JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CON EXITO!");
 
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -528,7 +528,7 @@ public class querysDB {
             pst.setString(4, higiene);
             pst.setInt(5, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "updated successfully");
+          JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CON EXITO!");
 
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -543,7 +543,7 @@ public class querysDB {
             pst.setString(2, observaciones);
             pst.setInt(3, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "updated successfully");
+           JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CON EXITO!");
 
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);

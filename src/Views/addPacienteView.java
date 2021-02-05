@@ -6,6 +6,7 @@
 package Views;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -31,7 +32,7 @@ public class addPacienteView extends javax.swing.JFrame {
      */
     public addPacienteView() {
         initComponents();
-    ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("resources/imagenes/CEPAC_Logo.png"));
+   setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("CEPAC_Logo.png")));
     }
 
     /**

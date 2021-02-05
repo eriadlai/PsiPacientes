@@ -6,6 +6,7 @@
 package Views;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,8 +30,14 @@ public class pacientesView extends javax.swing.JFrame {
     }
 
     public void showTableData(ResultSet rs) {
-      ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("resources/imagenes/CEPAC_Logo.png"));
+     
+ try {
 
+            tablaPacientes.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+
+        }
     }
 
     /**
@@ -38,24 +45,12 @@ public class pacientesView extends javax.swing.JFrame {
      */
     public pacientesView() {
         initComponents();
-           try {
-        Image i = ImageIO.read(new FileInputStream("imagenes/CEPAC_Logo.png"));
-        
-            setIconImage(i);
-        } catch (IOException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+          setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("CEPAC_Logo.png")));
     }
 
     public pacientesView(ResultSet rs) {
         initComponents();
-          try {
-        Image i = ImageIO.read(new FileInputStream("imagenes/CEPAC_Logo.png"));
-        
-            setIconImage(i);
-        } catch (IOException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("CEPAC_Logo.png")));
         showTableData(rs);
 
     }
@@ -202,9 +197,9 @@ public class pacientesView extends javax.swing.JFrame {
                             .addComponent(edadText, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(searchApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(searchNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(searchEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(searchEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(searchApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,13 +228,13 @@ public class pacientesView extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchApellido))
+                    .addComponent(searchNombre))
                 .addGap(9, 9, 9)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidoText, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchNombre))
+                    .addComponent(searchApellido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -336,21 +331,31 @@ public class pacientesView extends javax.swing.JFrame {
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         // TODO add your handling code here:
         showTableData(m.searchPacientes());
+        nombreText.setText("");
+        apellidoText.setText("");
+        edadText.setValue(0);
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void searchNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNombreActionPerformed
         // TODO add your handling code here:
         showTableData(m.searchPacientesNombre(nombreText.getText()));
+         apellidoText.setText("");
+        edadText.setValue(0);
     }//GEN-LAST:event_searchNombreActionPerformed
 
     private void searchApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchApellidoActionPerformed
         // TODO add your handling code here:
         showTableData(m.searchPacientesApellido(apellidoText.getText()));
+         nombreText.setText("");
+        
+        edadText.setValue(0);
     }//GEN-LAST:event_searchApellidoActionPerformed
 
     private void searchEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEdadActionPerformed
         // TODO add your handling code here:
         showTableData(m.searchPacientesEdad((int) edadText.getValue()));
+               nombreText.setText("");
+        apellidoText.setText("");
     }//GEN-LAST:event_searchEdadActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed

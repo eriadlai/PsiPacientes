@@ -6,6 +6,7 @@
 package Views;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -27,7 +28,13 @@ import psipacientes.motor;
 public class principalView extends javax.swing.JFrame {
 
     public void showTableData(ResultSet rs) {
-          ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("resources/imagenes/CEPAC_Logo.png"));
+          try {
+
+            familiaTable.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+
+        }
 
     }
 
@@ -124,13 +131,7 @@ public class principalView extends javax.swing.JFrame {
      */
     public principalView() {
         initComponents();
-  try {
-        Image i = ImageIO.read(new FileInputStream("imagenes/CEPAC_Logo.png"));
-        
-            setIconImage(i);
-        } catch (IOException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+  setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("CEPAC_Logo.png")));
         fechaIngreso.enable(false);
 
     }
@@ -1576,20 +1577,39 @@ public class principalView extends javax.swing.JFrame {
             embarazo = "Si";
             if (siTrauma.isSelected()) {
                 traumas = "Si";
-                m.updateSexual(id, antSexualText.getText(), embarazo, (int) embarazoEdad.getValue(), preferenciaText.getText(), traumas, infoTraumaText.getText());
-            } else {
+                if ((int) embarazoEdad.getValue()<=0) {
+                     JOptionPane.showMessageDialog(null, "LA EDAD NO PUEDE SER MENOR O IGUAL A 0!!");
+                }
+                else
+                {
+                     m.updateSexual(id, antSexualText.getText(), embarazo, (int) embarazoEdad.getValue(), preferenciaText.getText(), traumas, infoTraumaText.getText());
+                }
+               
+            } else if (noTrauma.isSelected()) {
                 traumas = "No";
-                m.updateSexual(id, antSexualText.getText(), embarazo, (int) embarazoEdad.getValue(), preferenciaText.getText(), traumas, "");
+                if ((int) embarazoEdad.getValue()<=0) {
+                     JOptionPane.showMessageDialog(null, "LA EDAD NO PUEDE SER MENOR O IGUAL A 0!!");
+                }else
+                {
+                    m.updateSexual(id, antSexualText.getText(), embarazo, (int) embarazoEdad.getValue(), preferenciaText.getText(), traumas, "");
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "DATOS DE SELECCION SI/NO NO MARCADOS!");
             }
-        } else {
+        } else if (noEmbarazo.isSelected()) {
             embarazo = "No";
             if (siTrauma.isSelected()) {
                 traumas = "Si";
                 m.updateSexual(id, antSexualText.getText(), embarazo, 0, preferenciaText.getText(), traumas, infoTraumaText.getText());
-            } else {
+            } else if (noTrauma.isSelected()) {
                 traumas = "No";
                 m.updateSexual(id, antSexualText.getText(), embarazo, 0, preferenciaText.getText(), traumas, "");
+            } else {
+                JOptionPane.showMessageDialog(null, "DATOS DE SELECCION SI/NO NO MARCADOS!");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "DATOS DE SELECCION SI/NO NO MARCADOS!");
         }
     }//GEN-LAST:event_editarSexualActionPerformed
 
