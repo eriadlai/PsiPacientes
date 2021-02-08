@@ -133,8 +133,9 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-
+        m.inicio();
         m.logeo(userText.getText(), passText.getText());
+       
         userText.setText("");
         passText.setText("");
 

@@ -10,7 +10,6 @@ import PDF.GeneratePDF;
 import Views.LoginView;
 import Views.addPacienteView;
 import Views.menuView;
-import Views.pacientesView;
 import Views.principalView;
 import java.io.File;
 import java.sql.ResultSet;
@@ -262,9 +261,7 @@ public class motor {
         this.addPaciente = addPaciente;
     }
 
-    public void setPacientesView(pacientesView pacientesv) {
-        this.pacientesv = pacientesv;
-    }
+   
 
     public void setPrincipalView(principalView principal) {
         this.principal = principal;
@@ -292,12 +289,7 @@ public class motor {
         addPaciente.setVisible(true);
     }
 
-    public void openPacientes() {
-        pacientesv.show();
-        pacientesv.pack();
-        pacientesv.setLocationRelativeTo(null);
-        pacientesv.setVisible(true);
-    }
+  
 
     public void openPrincipal() {
         principal.show();
@@ -310,9 +302,7 @@ public class motor {
         principal.hide();
     }
 
-    public void closePacientes() {
-        pacientesv.hide();
-    }
+   
 
     public void closeAddPaciente() {
         addPaciente.hide();
@@ -537,9 +527,9 @@ public class motor {
     //=========================================================================================
 
     public void inicio() {
-        pacientesv = new pacientesView(searchPacientes());
-        pacientesv.setMotor(this);
-        this.setPacientesView(pacientesv);
+        menuv = new menuView(searchPacientes());
+        menuv.setMotor(this);
+        this.setMenuView(menuv);
     }
 
     public void inicioPrincipal() {
@@ -554,7 +544,6 @@ public class motor {
     private querysDB querys;
     private menuView menuv;
     private addPacienteView addPaciente;
-    private pacientesView pacientesv;
     private principalView principal;
     private GeneratePDF pdf;
     //===========================================================================================

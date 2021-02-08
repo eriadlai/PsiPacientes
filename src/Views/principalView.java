@@ -147,17 +147,18 @@ public class principalView extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        socialText = new javax.swing.JTextArea();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        laboralText = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        volverSocial = new javax.swing.JButton();
+        editarSociales = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         viviendaText = new javax.swing.JTextArea();
-        editarSociales = new javax.swing.JButton();
-        volverSocial = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        laboralText = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        socialText = new javax.swing.JTextArea();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -310,7 +311,6 @@ public class principalView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Gestion de pacientes CEPAC: Datos generales");
-        setResizable(false);
 
         jTabbedPane1.setBackground(new java.awt.Color(247, 220, 111));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
@@ -318,34 +318,7 @@ public class principalView extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(193, 145, 42));
 
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Entorno Social");
-
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("Entorno Laboral");
-
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Entorno de Vivienda");
-
-        socialText.setColumns(20);
-        socialText.setRows(5);
-        jScrollPane6.setViewportView(socialText);
-
-        laboralText.setColumns(20);
-        laboralText.setRows(5);
-        jScrollPane7.setViewportView(laboralText);
-
-        viviendaText.setColumns(20);
-        viviendaText.setRows(5);
-        jScrollPane8.setViewportView(viviendaText);
-
-        editarSociales.setBackground(new java.awt.Color(247, 220, 111));
-        editarSociales.setText("Guardar Datos");
-        editarSociales.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarSocialesActionPerformed(evt);
-            }
-        });
+        jPanel2.setBackground(new java.awt.Color(193, 145, 42));
 
         volverSocial.setBackground(new java.awt.Color(247, 220, 111));
         volverSocial.setText("Volver");
@@ -355,64 +328,116 @@ public class principalView extends javax.swing.JFrame {
             }
         });
 
+        editarSociales.setBackground(new java.awt.Color(247, 220, 111));
+        editarSociales.setText("Guardar Datos");
+        editarSociales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarSocialesActionPerformed(evt);
+            }
+        });
+
+        viviendaText.setColumns(20);
+        viviendaText.setRows(5);
+        jScrollPane8.setViewportView(viviendaText);
+
+        laboralText.setColumns(20);
+        laboralText.setRows(5);
+        jScrollPane7.setViewportView(laboralText);
+
+        socialText.setColumns(20);
+        socialText.setRows(5);
+        jScrollPane6.setViewportView(socialText);
+
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Entorno de Vivienda");
+
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Entorno Laboral");
+
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Entorno Social");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(editarSociales)
+                                .addGap(32, 32, 32)
+                                .addComponent(volverSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane6)
+                            .addComponent(jScrollPane7)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE))))
+                .addGap(27, 27, 27))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel18)
+                .addGap(13, 13, 13)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel19)
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(volverSocial)
+                    .addComponent(editarSociales))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(editarSociales)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel17)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7)
-                    .addComponent(jScrollPane8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
-                .addComponent(volverSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17)
-                    .addComponent(volverSocial))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel18)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel19)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(editarSociales)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Exploracion de redes sociales", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Antecedentes de abuso sexual");
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
 
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Embarazos");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("¿A qué edad?");
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        jPanel5.add(embarazoEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 109, -1));
 
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("Preferencia Sexual");
+        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
 
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Exposicion a eventos traumaticos en esta area");
+        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel5.add(preferenciaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 170, 30));
 
         siEmbarazo.setBackground(new java.awt.Color(193, 145, 42));
         siEmbarazo.setForeground(new java.awt.Color(0, 0, 0));
@@ -422,6 +447,7 @@ public class principalView extends javax.swing.JFrame {
                 siEmbarazoActionPerformed(evt);
             }
         });
+        jPanel5.add(siEmbarazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         noEmbarazo.setBackground(new java.awt.Color(193, 145, 42));
         noEmbarazo.setForeground(new java.awt.Color(0, 0, 0));
@@ -431,6 +457,7 @@ public class principalView extends javax.swing.JFrame {
                 noEmbarazoActionPerformed(evt);
             }
         });
+        jPanel5.add(noEmbarazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         siTrauma.setBackground(new java.awt.Color(193, 145, 42));
         siTrauma.setForeground(new java.awt.Color(0, 0, 0));
@@ -440,6 +467,7 @@ public class principalView extends javax.swing.JFrame {
                 siTraumaActionPerformed(evt);
             }
         });
+        jPanel5.add(siTrauma, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         noTrauma.setBackground(new java.awt.Color(193, 145, 42));
         noTrauma.setForeground(new java.awt.Color(0, 0, 0));
@@ -449,17 +477,23 @@ public class principalView extends javax.swing.JFrame {
                 noTraumaActionPerformed(evt);
             }
         });
+        jPanel5.add(noTrauma, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("¿Cuáles?");
+        jPanel5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         infoTraumaText.setColumns(20);
         infoTraumaText.setRows(5);
         jScrollPane9.setViewportView(infoTraumaText);
 
+        jPanel5.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 410, -1));
+
         antSexualText.setColumns(20);
         antSexualText.setRows(5);
         jScrollPane27.setViewportView(antSexualText);
+
+        jPanel5.add(jScrollPane27, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 410, -1));
 
         editarSexual.setBackground(new java.awt.Color(247, 220, 111));
         editarSexual.setText("Guardar Datos");
@@ -468,6 +502,7 @@ public class principalView extends javax.swing.JFrame {
                 editarSexualActionPerformed(evt);
             }
         });
+        jPanel5.add(editarSexual, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
 
         volverSexual.setBackground(new java.awt.Color(247, 220, 111));
         volverSexual.setText("Volver");
@@ -476,107 +511,42 @@ public class principalView extends javax.swing.JFrame {
                 volverSexualActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel24)
-                        .addGap(401, 401, 401)
-                        .addComponent(volverSexual, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(siEmbarazo)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(embarazoEdad, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(preferenciaText, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel22)
-                                    .addComponent(noEmbarazo))
-                                .addGap(50, 50, 50)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(editarSexual)
-                                    .addComponent(noTrauma)
-                                    .addComponent(siTrauma)
-                                    .addComponent(jLabel26)
-                                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 225, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(volverSexual)
-                    .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(siTrauma)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(noTrauma)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel26)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(siEmbarazo)
-                        .addGap(18, 18, 18)
-                        .addComponent(noEmbarazo)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel22)
-                        .addGap(18, 18, 18)
-                        .addComponent(embarazoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel23)
-                        .addGap(18, 18, 18)
-                        .addComponent(preferenciaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editarSexual)))
-                .addContainerGap(298, Short.MAX_VALUE))
-        );
+        jPanel5.add(volverSexual, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 110, -1));
 
         jTabbedPane1.addTab("Historia sexual", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Hábitos de sueño");
+        jPanel6.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 22, -1, -1));
 
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("Hábitos alimenticios");
+        jPanel6.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 174, -1, -1));
 
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setText("Antecedentes psicológicos paciente");
+        jPanel6.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 346, -1, -1));
 
         dreamText.setColumns(20);
         dreamText.setRows(5);
         jScrollPane10.setViewportView(dreamText);
 
+        jPanel6.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 56, 640, -1));
+
         alimentoText.setColumns(20);
         alimentoText.setRows(5);
         jScrollPane11.setViewportView(alimentoText);
 
+        jPanel6.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 208, 640, -1));
+
         antPsiText.setColumns(20);
         antPsiText.setRows(5);
         jScrollPane12.setViewportView(antPsiText);
+
+        jPanel6.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 380, 640, -1));
 
         editarHabitos.setBackground(new java.awt.Color(247, 220, 111));
         editarHabitos.setText("Guardar Datos");
@@ -585,6 +555,7 @@ public class principalView extends javax.swing.JFrame {
                 editarHabitosActionPerformed(evt);
             }
         });
+        jPanel6.add(editarHabitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, -1, -1));
 
         volverHabito.setBackground(new java.awt.Color(247, 220, 111));
         volverHabito.setText("Volver");
@@ -593,71 +564,42 @@ public class principalView extends javax.swing.JFrame {
                 volverHabitoActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(editarHabitos)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel25)
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1244, Short.MAX_VALUE)
-                    .addComponent(jScrollPane11)
-                    .addComponent(jScrollPane10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(volverHabito, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel25)
-                    .addComponent(volverHabito))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel27)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(jLabel28)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(editarHabitos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel6.add(volverHabito, new org.netbeans.lib.awtextra.AbsoluteConstraints(1322, 6, 133, -1));
 
         jTabbedPane1.addTab("Habitos", jPanel6);
 
         jPanel8.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel34.setForeground(new java.awt.Color(0, 0, 0));
         jLabel34.setText("Área psicológica");
+        jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 21, -1, -1));
 
         antFamPsiText.setColumns(20);
         antFamPsiText.setRows(5);
         jScrollPane18.setViewportView(antFamPsiText);
 
+        jPanel8.add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 63, 740, -1));
+
         jLabel35.setForeground(new java.awt.Color(0, 0, 0));
         jLabel35.setText("Área psiquiátrica");
+        jPanel8.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 164, -1, -1));
 
         antFamPsiqText.setColumns(20);
         antFamPsiqText.setRows(5);
         jScrollPane19.setViewportView(antFamPsiqText);
 
+        jPanel8.add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 198, 740, -1));
+
         jLabel36.setForeground(new java.awt.Color(0, 0, 0));
         jLabel36.setText("Otras patologías");
+        jPanel8.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 299, -1, -1));
 
         antFamPatText.setColumns(20);
         antFamPatText.setRows(5);
         jScrollPane20.setViewportView(antFamPatText);
+
+        jPanel8.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 333, 740, -1));
 
         editarAntFam.setBackground(new java.awt.Color(247, 220, 111));
         editarAntFam.setText("Guardar  Datos");
@@ -666,6 +608,7 @@ public class principalView extends javax.swing.JFrame {
                 editarAntFamActionPerformed(evt);
             }
         });
+        jPanel8.add(editarAntFam, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 434, 144, -1));
 
         VolverAntFam.setBackground(new java.awt.Color(247, 220, 111));
         VolverAntFam.setText("Volver");
@@ -674,52 +617,12 @@ public class principalView extends javax.swing.JFrame {
                 VolverAntFamActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel35)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1214, Short.MAX_VALUE)
-                        .addComponent(VolverAntFam, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(editarAntFam, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1254, Short.MAX_VALUE)
-                        .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane18, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(VolverAntFam))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel35)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel36)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(editarAntFam)
-                .addContainerGap(228, Short.MAX_VALUE))
-        );
+        jPanel8.add(VolverAntFam, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 129, -1));
 
         jTabbedPane1.addTab("Antecedentes familiares", jPanel8);
 
         jPanel3.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         familiaTable.setBackground(new java.awt.Color(193, 145, 42));
         familiaTable.setForeground(new java.awt.Color(0, 0, 0));
@@ -741,6 +644,8 @@ public class principalView extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(familiaTable);
 
+        jPanel3.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1047, 698));
+
         volverFam.setBackground(new java.awt.Color(247, 220, 111));
         volverFam.setText("Volver");
         volverFam.addActionListener(new java.awt.event.ActionListener() {
@@ -748,6 +653,7 @@ public class principalView extends javax.swing.JFrame {
                 volverFamActionPerformed(evt);
             }
         });
+        jPanel3.add(volverFam, new org.netbeans.lib.awtextra.AbsoluteConstraints(1337, 6, 118, -1));
 
         ingresarFamiliar.setBackground(new java.awt.Color(247, 220, 111));
         ingresarFamiliar.setText("Ingresar Datos");
@@ -756,6 +662,7 @@ public class principalView extends javax.swing.JFrame {
                 ingresarFamiliarActionPerformed(evt);
             }
         });
+        jPanel3.add(ingresarFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 392, -1, -1));
 
         borrar.setBackground(new java.awt.Color(247, 220, 111));
         borrar.setText("Borrar Datos");
@@ -764,112 +671,69 @@ public class principalView extends javax.swing.JFrame {
                 borrarActionPerformed(evt);
             }
         });
+        jPanel3.add(borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 660, -1, -1));
 
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
         jLabel43.setText("Nombre");
+        jPanel3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 22, -1, -1));
 
         famNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 famNombreActionPerformed(evt);
             }
         });
+        jPanel3.add(famNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 56, 215, -1));
 
         jLabel44.setForeground(new java.awt.Color(0, 0, 0));
         jLabel44.setText("Parentesco");
+        jPanel3.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 162, -1, -1));
+        jPanel3.add(famParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 196, 215, -1));
 
         jLabel45.setForeground(new java.awt.Color(0, 0, 0));
         jLabel45.setText("Edad");
+        jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 238, -1, -1));
 
         jLabel46.setForeground(new java.awt.Color(0, 0, 0));
         jLabel46.setText("Ocupacion");
+        jPanel3.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 316, -1, -1));
+        jPanel3.add(famOcupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 350, 215, -1));
+        jPanel3.add(famEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 272, 73, -1));
 
         jLabel47.setForeground(new java.awt.Color(0, 0, 0));
         jLabel47.setText("Apellido");
+        jPanel3.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 98, -1, -1));
 
         famApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 famApellidoActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(borrar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel43)
-                            .addComponent(jLabel44)
-                            .addComponent(jLabel45)
-                            .addComponent(jLabel46)
-                            .addComponent(famEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(famNombre)
-                            .addComponent(famParentesco)
-                            .addComponent(famOcupacion, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                            .addComponent(ingresarFamiliar)
-                            .addComponent(jLabel47)
-                            .addComponent(famApellido))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                        .addComponent(volverFam, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel43)
-                    .addComponent(volverFam))
-                .addGap(18, 18, 18)
-                .addComponent(famNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel47)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(famApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel44)
-                .addGap(18, 18, 18)
-                .addComponent(famParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel45)
-                .addGap(18, 18, 18)
-                .addComponent(famEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel46)
-                .addGap(18, 18, 18)
-                .addComponent(famOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ingresarFamiliar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(borrar)
-                .addContainerGap())
-        );
+        jPanel3.add(famApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 126, 215, -1));
 
         jTabbedPane1.addTab("Estructura y funcionalidad familiar", jPanel3);
 
         jPanel12.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel41.setForeground(new java.awt.Color(0, 0, 0));
         jLabel41.setText("IMPRESIÓN DIAGNÓSTICA");
+        jPanel12.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 26, -1, -1));
 
         diagnosticoText.setColumns(20);
         diagnosticoText.setRows(5);
         jScrollPane25.setViewportView(diagnosticoText);
 
+        jPanel12.add(jScrollPane25, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 48, 760, 110));
+
         jLabel42.setForeground(new java.awt.Color(0, 0, 0));
         jLabel42.setText("OBSERVACIONES GENERALES");
+        jPanel12.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         observacionText.setColumns(20);
         observacionText.setRows(5);
         jScrollPane26.setViewportView(observacionText);
+
+        jPanel12.add(jScrollPane26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 760, 110));
 
         editarReporte.setBackground(new java.awt.Color(247, 220, 111));
         editarReporte.setText("Guardar Datos");
@@ -878,6 +742,7 @@ public class principalView extends javax.swing.JFrame {
                 editarReporteActionPerformed(evt);
             }
         });
+        jPanel12.add(editarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 165, -1));
 
         volverReporte.setBackground(new java.awt.Color(247, 220, 111));
         volverReporte.setText("Volver");
@@ -886,78 +751,54 @@ public class principalView extends javax.swing.JFrame {
                 volverReporteActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane26, javax.swing.GroupLayout.DEFAULT_SIZE, 1063, Short.MAX_VALUE)
-                    .addComponent(jLabel42)
-                    .addComponent(jLabel41)
-                    .addComponent(jScrollPane25))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(volverReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editarReporte, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                .addContainerGap(175, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel41)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(editarReporte)
-                        .addGap(24, 24, 24)
-                        .addComponent(volverReporte)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel42)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel12.add(volverReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 165, -1));
 
         jScrollPane28.setViewportView(jPanel12);
 
         jTabbedPane1.addTab("Reporte de sesion", jScrollPane28);
 
         jPanel11.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel37.setForeground(new java.awt.Color(0, 0, 0));
         jLabel37.setText("PERCEPCION Y LENGUAJE");
+        jPanel11.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 18, -1, -1));
 
         lenguajeText.setColumns(20);
         lenguajeText.setRows(5);
         jScrollPane21.setViewportView(lenguajeText);
 
+        jPanel11.add(jScrollPane21, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 48, 670, -1));
+
         jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("ESTADO EMOCIONAL");
+        jPanel11.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 137, -1, -1));
 
         emocionalText.setColumns(20);
         emocionalText.setRows(5);
         jScrollPane22.setViewportView(emocionalText);
 
+        jPanel11.add(jScrollPane22, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 159, 670, -1));
+
         jLabel39.setForeground(new java.awt.Color(0, 0, 0));
         jLabel39.setText("CONTACTO CON LA REALIDAD");
+        jPanel11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 248, -1, -1));
 
         realidadText.setColumns(20);
         realidadText.setRows(5);
         jScrollPane23.setViewportView(realidadText);
 
+        jPanel11.add(jScrollPane23, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 270, 670, -1));
+
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
         jLabel40.setText("HIGIENE Y APARIENCIA PERSONAL");
+        jPanel11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 359, -1, 27));
 
         higieneText.setColumns(20);
         higieneText.setRows(5);
         jScrollPane24.setViewportView(higieneText);
+
+        jPanel11.add(jScrollPane24, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 392, 670, -1));
 
         editarMental.setBackground(new java.awt.Color(247, 220, 111));
         editarMental.setText("Guardar Datos");
@@ -966,6 +807,7 @@ public class principalView extends javax.swing.JFrame {
                 editarMentalActionPerformed(evt);
             }
         });
+        jPanel11.add(editarMental, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 493, 120, -1));
 
         volverMental.setBackground(new java.awt.Color(247, 220, 111));
         volverMental.setText("Volver");
@@ -974,97 +816,64 @@ public class principalView extends javax.swing.JFrame {
                 volverMentalActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(editarMental, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1269, Short.MAX_VALUE)
-                            .addComponent(jScrollPane22, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane21, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane24, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(volverMental, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(volverMental))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel39)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(editarMental)
-                .addContainerGap(174, Short.MAX_VALUE))
-        );
+        jPanel11.add(volverMental, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 138, -1));
 
         jScrollPane29.setViewportView(jPanel11);
 
         jTabbedPane1.addTab("Analisis del estado mental", jScrollPane29);
 
         jPanel13.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel29.setForeground(new java.awt.Color(0, 0, 0));
         jLabel29.setText("¿Ha tenido alguna enfermedad grave?");
+        jPanel13.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 22, -1, -1));
 
         enfermedadText.setColumns(20);
         enfermedadText.setRows(5);
         jScrollPane13.setViewportView(enfermedadText);
 
+        jPanel13.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 657, -1));
+
         jLabel30.setForeground(new java.awt.Color(0, 0, 0));
         jLabel30.setText("Accidentes/lesiones");
+        jPanel13.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 143, -1, -1));
 
         accidenteText.setColumns(20);
         accidenteText.setRows(5);
         jScrollPane14.setViewportView(accidenteText);
 
+        jPanel13.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 165, 657, -1));
+
         jLabel31.setForeground(new java.awt.Color(0, 0, 0));
         jLabel31.setText("¿Utiliza algún medicamento?");
+        jPanel13.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 254, -1, -1));
 
         medicamentoText.setColumns(20);
         medicamentoText.setRows(5);
         jScrollPane15.setViewportView(medicamentoText);
 
+        jPanel13.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 276, 657, -1));
+
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("Intervención quirúrgica");
+        jPanel13.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 365, -1, -1));
 
         intervencionText.setColumns(20);
         intervencionText.setRows(5);
         jScrollPane16.setViewportView(intervencionText);
 
+        jPanel13.add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 387, 657, -1));
+
         jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Utiliza lentes u otro dispositivo auxiliar");
+        jPanel13.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 476, -1, -1));
 
         auxText.setColumns(20);
         auxText.setRows(5);
         jScrollPane17.setViewportView(auxText);
+
+        jPanel13.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 498, 657, -1));
 
         volverClinico.setBackground(new java.awt.Color(247, 220, 111));
         volverClinico.setText("Volver");
@@ -1073,6 +882,7 @@ public class principalView extends javax.swing.JFrame {
                 volverClinicoActionPerformed(evt);
             }
         });
+        jPanel13.add(volverClinico, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 587, 145, -1));
 
         editarClinico.setBackground(new java.awt.Color(247, 220, 111));
         editarClinico.setText("Guardar Datos");
@@ -1081,96 +891,54 @@ public class principalView extends javax.swing.JFrame {
                 editarClinicoActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(editarClinico, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel30)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel32)
-                            .addComponent(jLabel33)
-                            .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
-                            .addComponent(jScrollPane15)
-                            .addComponent(jScrollPane13)
-                            .addComponent(jScrollPane14)
-                            .addComponent(jScrollPane17))
-                        .addContainerGap(371, Short.MAX_VALUE))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(volverClinico, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(volverClinico))
-                .addGap(2, 2, 2)
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel30)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel32)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editarClinico)
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
+        jPanel13.add(editarClinico, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 587, 192, -1));
 
         jScrollPane30.setViewportView(jPanel13);
 
         jTabbedPane1.addTab("Antecedentes Clinicos", jScrollPane30);
 
         jPanel14.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Evolucion");
+        jPanel14.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         evolucionText.setColumns(20);
         evolucionText.setRows(5);
         jScrollPane1.setViewportView(evolucionText);
 
+        jPanel14.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 944, -1));
+
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Causas");
+        jPanel14.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         causasText.setColumns(20);
         causasText.setRows(5);
         jScrollPane3.setViewportView(causasText);
 
+        jPanel14.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 944, -1));
+
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Acciones realizadas en busca de solucion");
+        jPanel14.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
         accionesText.setColumns(20);
         accionesText.setRows(5);
         jScrollPane2.setViewportView(accionesText);
 
+        jPanel14.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 944, -1));
+
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Implicaciones (a nivel familiar, social, academico, etc.)");
+        jPanel14.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
         implicacionesText.setColumns(20);
         implicacionesText.setRows(5);
         jScrollPane4.setViewportView(implicacionesText);
+
+        jPanel14.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 944, -1));
 
         EditarProblema.setBackground(new java.awt.Color(247, 220, 111));
         EditarProblema.setText("Editar Datos");
@@ -1179,6 +947,7 @@ public class principalView extends javax.swing.JFrame {
                 EditarProblemaActionPerformed(evt);
             }
         });
+        jPanel14.add(EditarProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 208, -1));
 
         VolverProblema.setBackground(new java.awt.Color(247, 220, 111));
         VolverProblema.setText("Volver");
@@ -1187,85 +956,44 @@ public class principalView extends javax.swing.JFrame {
                 VolverProblemaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1194, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane2)
-                            .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane4))
-                        .addGap(79, 79, 79)
-                        .addComponent(VolverProblema, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel16)
-                            .addComponent(EditarProblema, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(VolverProblema))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EditarProblema)
-                .addContainerGap(209, Short.MAX_VALUE))
-        );
+        jPanel14.add(VolverProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 173, -1));
 
         jScrollPane31.setViewportView(jPanel14);
 
         jTabbedPane1.addTab("Definicion del Problema", jScrollPane31);
 
         jPanel1.setBackground(new java.awt.Color(193, 145, 42));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(nameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 40, 171, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Apellido");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 17, -1, -1));
+        jPanel1.add(apellidoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 176, -1));
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Edad");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 17, -1, -1));
+        jPanel1.add(edadText, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 39, 123, -1));
+        jPanel1.add(dateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 165, 143, -1));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nacimiento");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 135, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Escolaridad");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 135, -1, -1));
 
         lvlText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Primaria", "Secundaria", "Bachillerato", "Profesional", "Licenciatura", "Posgrado", "Doctorado" }));
+        jPanel1.add(lvlText, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 165, 176, -1));
 
         religionText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristiano", "Catolico", "Judio", "Otro" }));
+        jPanel1.add(religionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 168, 213, -1));
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Religion");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 143, -1, -1));
 
         editar.setBackground(new java.awt.Color(247, 220, 111));
         editar.setText("Editar Datos");
@@ -1274,32 +1002,48 @@ public class principalView extends javax.swing.JFrame {
                 editarActionPerformed(evt);
             }
         });
+        jPanel1.add(editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 200, 143, -1));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 17, -1, -1));
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Ocupacion");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 17, -1, -1));
+        jPanel1.add(ocupacionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 40, 213, -1));
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Actividad Extra");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 77, -1, -1));
+        jPanel1.add(actText, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 99, 171, -1));
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Direccion");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 77, -1, -1));
 
         direccionText.setToolTipText("");
+        jPanel1.add(direccionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 99, 176, -1));
 
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Telefono");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 77, -1, -1));
+        jPanel1.add(telefonoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 99, 213, -1));
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Asunto o Motivo de la consulta");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 77, -1, -1));
+        jPanel1.add(asuntoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 99, 172, -1));
 
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Objetivo Terapeutico");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 143, -1, -1));
+        jPanel1.add(objText, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 169, 172, -1));
 
         jLabel48.setForeground(new java.awt.Color(0, 0, 0));
         jLabel48.setText("Fecha de ingreso");
+        jPanel1.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
+        jPanel1.add(fechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 130, -1));
 
         volver.setBackground(new java.awt.Color(247, 220, 111));
         volver.setText("Volver");
@@ -1308,123 +1052,7 @@ public class principalView extends javax.swing.JFrame {
                 volverActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel8)
-                            .addComponent(nameText, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                            .addComponent(actText))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel5)
-                            .addComponent(apellidoText)
-                            .addComponent(direccionText)
-                            .addComponent(lvlText, 0, 176, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(religionText, javax.swing.GroupLayout.Alignment.LEADING, 0, 213, Short.MAX_VALUE)
-                                .addComponent(ocupacionText, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(telefonoText, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel6))
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(edadText, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addGap(166, 166, 166)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel48)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
-                                        .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(asuntoText, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(objText, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel48)
-                    .addComponent(volver))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(apellidoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ocupacionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edadText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(actText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(direccionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(telefonoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(asuntoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel12))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(religionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(objText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(495, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lvlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editar)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
+        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 133, -1));
 
         jTabbedPane1.addTab("Informacion General", jPanel1);
 
@@ -1432,15 +1060,11 @@ public class principalView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, Short.MAX_VALUE)
         );
 
         pack();
@@ -1448,7 +1072,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void volverReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverReporteActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+        m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_volverReporteActionPerformed
 
@@ -1459,7 +1083,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+       m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_volverActionPerformed
 
@@ -1510,7 +1134,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void volverFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverFamActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+      m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_volverFamActionPerformed
 
@@ -1521,7 +1145,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void volverMentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverMentalActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+      m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_volverMentalActionPerformed
 
@@ -1532,7 +1156,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void VolverAntFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverAntFamActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+      m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_VolverAntFamActionPerformed
 
@@ -1543,7 +1167,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void volverClinicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverClinicoActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+        m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_volverClinicoActionPerformed
 
@@ -1554,7 +1178,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void volverHabitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverHabitoActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+       m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_volverHabitoActionPerformed
 
@@ -1565,7 +1189,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void volverSexualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverSexualActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+       m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_volverSexualActionPerformed
 
@@ -1639,7 +1263,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void volverSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverSocialActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+        m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_volverSocialActionPerformed
 
@@ -1655,7 +1279,7 @@ public class principalView extends javax.swing.JFrame {
 
     private void VolverProblemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverProblemaActionPerformed
         // TODO add your handling code here:
-        m.openPacientes();
+       m.openMenu();
         m.closePrincipal();
     }//GEN-LAST:event_VolverProblemaActionPerformed
 
@@ -1794,6 +1418,7 @@ public class principalView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

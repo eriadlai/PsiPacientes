@@ -10,7 +10,6 @@ import PDF.GeneratePDF;
 import Views.LoginView;
 import Views.addPacienteView;
 import Views.menuView;
-import Views.pacientesView;
 import Views.principalView;
 
 /**
@@ -33,7 +32,6 @@ public class main {
         LoginView login = new LoginView();
         menuView menuv = new menuView();
         addPacienteView addPaciente = new addPacienteView();
-        pacientesView pacientesv = new pacientesView();
         principalView principal = new principalView();
         //==========INICIAR GENERACION DE PDF=================================
         GeneratePDF pdf = new GeneratePDF();
@@ -42,12 +40,10 @@ public class main {
         m.setQuerysDB(querys);
         m.setLoginView(login);
         m.setAddPacienteView(addPaciente);
-        m.setPacientesView(pacientesv);
         m.setPrincipalView(principal);
         m.setPDF(pdf);
         pdf.setMotor(m);
         principal.setMotor(m);
-        pacientesv.setMotor(m);
         addPaciente.SetMotor(m);
         querys.setMotor(m);
         menuv.setMotor(m);

@@ -7,7 +7,6 @@ package BD;
 
 import Views.LoginView;
 import Views.menuView;
-import Views.pacientesView;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -1419,5 +1418,4 @@ public class querysDB {
     private motor m;
     private LoginView login;
     private menuView menuv;
-    private pacientesView pacientesv;
 }
