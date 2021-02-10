@@ -8,7 +8,6 @@ package psipacientes;
 import BD.querysDB;
 import PDF.GeneratePDF;
 import Views.LoginView;
-import Views.addPacienteView;
 import Views.menuView;
 import Views.principalView;
 
@@ -31,7 +30,6 @@ public class main {
         //===========INICIAR VIEWS====================
         LoginView login = new LoginView();
         menuView menuv = new menuView();
-        addPacienteView addPaciente = new addPacienteView();
         principalView principal = new principalView();
         //==========INICIAR GENERACION DE PDF=================================
         GeneratePDF pdf = new GeneratePDF();
@@ -39,12 +37,10 @@ public class main {
         m.setMenuView(menuv);
         m.setQuerysDB(querys);
         m.setLoginView(login);
-        m.setAddPacienteView(addPaciente);
         m.setPrincipalView(principal);
         m.setPDF(pdf);
         pdf.setMotor(m);
         principal.setMotor(m);
-        addPaciente.SetMotor(m);
         querys.setMotor(m);
         menuv.setMotor(m);
         login.setMotor(m);

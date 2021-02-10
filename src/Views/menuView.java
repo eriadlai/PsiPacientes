@@ -5,17 +5,10 @@
  */
 package Views;
 
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import psipacientes.motor;
@@ -236,10 +229,10 @@ public void showTableData(ResultSet rs) {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(350, 350, 350)
-                .addComponent(deleteName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(259, 259, 259)
+                .addComponent(deleteName, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -706,32 +699,32 @@ public void showTableData(ResultSet rs) {
 
     private void searchNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNombreActionPerformed
         // TODO add your handling code here:
-        showTableData(m.searchPacientesNombre(nombreText.getText()));
-        apellidoText.setText("");
-        edadText.setValue(0);
+        showTableData(m.searchPacientesNombre(nombreText1.getText()));
+        apellidoText1.setText("");
+        edadText1.setValue(0);
     }//GEN-LAST:event_searchNombreActionPerformed
 
     private void searchApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchApellidoActionPerformed
         // TODO add your handling code here:
-        showTableData(m.searchPacientesApellido(apellidoText.getText()));
-        nombreText.setText("");
+        showTableData(m.searchPacientesApellido(apellidoText1.getText()));
+        nombreText1.setText("");
 
-        edadText.setValue(0);
+        edadText1.setValue(0);
     }//GEN-LAST:event_searchApellidoActionPerformed
 
     private void searchEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEdadActionPerformed
         // TODO add your handling code here:
-        showTableData(m.searchPacientesEdad((int) edadText.getValue()));
-        nombreText.setText("");
-        apellidoText.setText("");
+        showTableData(m.searchPacientesEdad((int) edadText1.getValue()));
+        nombreText1.setText("");
+        apellidoText1.setText("");
     }//GEN-LAST:event_searchEdadActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         // TODO add your handling code here:
         showTableData(m.searchPacientes());
-        nombreText.setText("");
-        apellidoText.setText("");
-        edadText.setValue(0);
+        nombreText1.setText("");
+        apellidoText1.setText("");
+        edadText1.setValue(0);
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void goPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goPrincipalActionPerformed

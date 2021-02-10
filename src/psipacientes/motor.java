@@ -8,7 +8,6 @@ package psipacientes;
 import BD.querysDB;
 import PDF.GeneratePDF;
 import Views.LoginView;
-import Views.addPacienteView;
 import Views.menuView;
 import Views.principalView;
 import java.io.File;
@@ -257,9 +256,7 @@ public class motor {
         this.menuv = menuv;
     }
 
-    public void setAddPacienteView(addPacienteView addPaciente) {
-        this.addPaciente = addPaciente;
-    }
+   
 
    
 
@@ -282,15 +279,7 @@ public class motor {
         loginView.setVisible(true);
     }
 
-    public void openAddPaciente() {
-        addPaciente.show();
-        addPaciente.pack();
-        addPaciente.setLocationRelativeTo(null);
-        addPaciente.setVisible(true);
-    }
-
   
-
     public void openPrincipal() {
         principal.show();
         principal.pack();
@@ -304,9 +293,7 @@ public class motor {
 
    
 
-    public void closeAddPaciente() {
-        addPaciente.hide();
-    }
+   
 
     public void closeMenu() {
         menuv.hide();
@@ -543,7 +530,6 @@ public class motor {
     private LoginView loginView;
     private querysDB querys;
     private menuView menuv;
-    private addPacienteView addPaciente;
     private principalView principal;
     private GeneratePDF pdf;
     //===========================================================================================

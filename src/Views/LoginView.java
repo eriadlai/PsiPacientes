@@ -5,14 +5,7 @@
  */
 package Views;
 
-import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import psipacientes.motor;
 
 /**
